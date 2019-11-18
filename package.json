@@ -2,14 +2,15 @@
   "name": "workbook",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Husky pre-commit work\" && exit 1"
-  },
   "author": "Marcin Cyboran",
+  "scripts": {
+    "pretty:server": "prettier --write \"server/**/*.js\"",
+    "pretty:client": "prettier --write \"server/**/*.*(ts|tsx)\"",
+    "pretty:check": "prettier --check \"**/*.*(js|jsx|ts|tsx)\""
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|tsx)\""
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|ts|tsx)\""
     }
   },
   "license": "ISC",
