@@ -1,0 +1,21 @@
+{
+  "name": "workbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Husky pre-commit work\" && exit 1"
+  },
+  "author": "Marcin Cyboran",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.*(js|jsx|tsx)\""
+    }
+  },
+  "license": "ISC",
+  "dependencies": {
+    "husky": "^3.1.0",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1"
+  }
+}
