@@ -1,0 +1,36 @@
+.footer {
+    background-color: var(--color-gray-light-4);
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    
+    &-inner {
+        padding: var(--default-vertical-gap) 0;
+        min-height: calc(2 * var(--default-bar-height));
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    &-inner > * {
+        flex: 1;
+    }
+
+    &__copyrights > * {
+        display: block;
+        color: var(--color-gray-light-1);
+        font-size: 1.4rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    &__logo {
+        text-align: center;
+    }
+
+    &__socials {
+        text-align: right;
+        font-size: 0;        
+    }
+}

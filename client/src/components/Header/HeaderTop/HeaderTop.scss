@@ -1,0 +1,16 @@
+.header-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-small-light);
+    z-index: 999;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: var(--default-bar-height);
+    }
+}

@@ -1,13 +1,14 @@
 {
-    "name": "server",
+    "name": "workbook-server",
     "version": "1.0.0",
     "description": "",
+    "author": "Marcin Cyboran",
     "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "",
     "license": "ISC",
+    "scripts": {
+        "start:prod": "node index.js",
+        "start:dev": "nodemon index.js"
+    },
     "dependencies": {
         "bcryptjs": "^2.4.3",
         "colors": "^1.4.0",

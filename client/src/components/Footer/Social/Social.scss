@@ -1,0 +1,43 @@
+.f-social {
+    font-size: 1.4rem;
+    color: var(--color-gray-dark-1);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-small-middle);
+    border-bottom: 2px solid currentColor;
+    // border-radius: var(--default-border-radius);
+    transform-origin: top;
+    transform: skewX(-15deg) scaleY(1) translateY(0);
+    transition: all .6s;
+    
+    & > * {
+        transform: skewX(15deg);
+    }
+
+    &__icon {
+        fill: currentColor;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &--facebook { color: var(--color-facebook);}
+    &--twitter { color: var(--color-twitter);}
+    &--youtube { color: var(--color-youtube);}
+    &--linkedin { color: var(--color-linkedin);}
+    &--noactive {
+        color: var(--color-gray-light-4);
+        cursor: default;
+    }
+
+    &:not(&--noactive):hover {
+        transform: skewX(-15deg) scale(1.1) translateY(-1rem);
+    }
+
+    &:not(:last-child) {
+        margin-right: var(--small-horizontal-gap);
+    }
+}

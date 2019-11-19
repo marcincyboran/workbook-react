@@ -1,0 +1,45 @@
+@keyframes active-button {
+    0% { box-shadow: var(--shadow-small-middle); transform: scale(1); }
+    100% { box-shadow: var(--shadow-small-dark); transform: scale(1.02); }
+}
+
+@keyframes rotate360 {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes loginChangeLeft {
+    0% { left: 0; }
+    50% { left: -4rem; }
+    100% {
+        left: 0;
+        z-index: 2;
+    }
+}
+
+@keyframes loginChangeRight {
+    0% { right: 0; }
+    50% { right: -4rem; }
+    100% {
+        right: 0;
+        z-index: 2;
+    }
+}
+
+@keyframes hiddeHeader {
+    0% { 
+        opacity: 1;
+        display: block;
+        height: 45vh;
+        display: block;
+    }
+    75% { 
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+        height: 0;
+        padding-top: 0;
+        display: none;
+    }
+}

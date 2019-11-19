@@ -1,0 +1,51 @@
+.login {
+    display: flex;
+    
+    &-left,
+    &-right {
+        flex: 0 1 30%;
+        position: relative;
+        padding: calc(2 * var(--default-padding));
+        box-shadow: var(--shadow-small-middle);
+        border-radius: calc(2 * var(--default-border-radius));
+        background-color: var(--color-white);
+    }
+    &-left {
+        padding-right: calc(3 * var(--default-padding));
+        &:hover { animation: loginChangeLeft .8s .5s forwards  ; }
+    }
+    &-right {
+        padding-left: calc(3 * var(--default-padding));
+        &:hover { animation: loginChangeRight .8s .5s forwards; }
+    }
+
+    &-center {
+        flex: 1;
+        padding:
+            calc(2 * var(--default-padding)) 
+            calc(2 * var(--default-padding)) 
+            calc(3 * var(--default-padding)) 
+            calc(2 * var(--default-padding));
+        background: linear-gradient(
+            to right bottom,
+            rgba($color-tertiary-light,1),
+            rgba($color-primary-light,1));
+        transform: scale(1.1);
+        border-radius:  calc(2 * var(--default-border-radius));
+        box-shadow: var(--shadow-small-dark);
+        z-index: 1;
+
+        &:hover {
+            .logo {
+                letter-spacing: 2px;
+            }
+        }
+        & .form__input {
+            border-radius: 5rem;
+        }
+        & .form__input-error {
+            color: var(--color-secondary-dark);
+            text-align: center;
+        }
+    }
+}
