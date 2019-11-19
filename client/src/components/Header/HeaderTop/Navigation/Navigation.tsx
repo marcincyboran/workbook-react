@@ -1,6 +1,6 @@
 import React from 'react';
 import './Navigation.scss';
-
+import NavigationItem from './NavigationItem/NavigationItem';
 class Navigation extends React.Component<{}, {}> {
     state = {
         links: [
@@ -13,17 +13,13 @@ class Navigation extends React.Component<{}, {}> {
     };
 
     render() {
+        const navigationItems = this.state.links.map(el => (
+            <NavigationItem href={el.href} desc={el.desc} key={el.desc} />
+        ));
+
         return (
             <nav className="top-nav">
-                <ul className="top-nav__list">
-                    {this.state.links.map(el => (
-                        <li className="top-nav__item">
-                            <a href={el.href} title={el.desc} key={el.href} className="top-nav__link">
-                                {el.desc}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+                <ul className="top-nav__list">{navigationItems}</ul>
             </nav>
         );
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from 'react-style-classes';
 import './Social.scss';
 
 type socialProps = {
@@ -7,11 +8,15 @@ type socialProps = {
     disabled?: boolean;
 };
 
-const Social: React.FC<socialProps> = ({ link, type, disabled }) => {
+const Social: React.FC<socialProps> = ({ link, type, disabled = false }) => {
     return (
-        <a href={!disabled ? link : '#'} className={`f-social f-social--${type}`} title={`Odwiedź nas - ${type}`}>
-            <svg className={`f-social__icon ${disabled ? 'f-social--noactive' : null}`}>
-                <use xlinkHref={process.env.PUBLIC_URL + `/svgs/sprite.svg#icon-${type}`} />
+        <a
+            href={!disabled ? link : '#'}
+            className={classes('f-social', `f-social--${type}`, disabled && 'f-social--noactive')}
+            title={`Odwiedź nas - ${type}`}
+        >
+            <svg className="f-social__icon">
+                <use xlinkHref={`svgs/sprite.svg#icon-${type}`} />
             </svg>
         </a>
     );

@@ -8387,6 +8387,11 @@ react-scroll-parallax@^2.2.0:
   dependencies:
     prop-types "^15.5.10"
 
+react-style-classes@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/react-style-classes/-/react-style-classes-2.0.2.tgz#12db66a62035421cae59485760a5b4c24e29688e"
+  integrity sha512-rTCQ7+3ldITMMpMc0FXAPS8xNwsG46tTejQ3mcHfMXMTqTd1HS5+Lml1RobrpUcgRkOQs2swHeIFbGKsXDR36Q==
+
 react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"

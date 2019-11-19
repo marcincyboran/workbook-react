@@ -18,12 +18,6 @@
         transform: skewX(15deg);
     }
 
-    &__icon {
-        fill: currentColor;
-        width: 2rem;
-        height: 2rem;
-    }
-
     &--facebook { color: var(--color-facebook);}
     &--twitter { color: var(--color-twitter);}
     &--youtube { color: var(--color-youtube);}
@@ -31,6 +25,12 @@
     &--noactive {
         color: var(--color-gray-light-4);
         cursor: default;
+    }
+
+    &__icon {
+        fill: currentColor;
+        width: 2rem;
+        height: 2rem;
     }
 
     &:not(&--noactive):hover {
