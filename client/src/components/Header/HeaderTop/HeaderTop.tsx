@@ -1,6 +1,6 @@
 import React from 'react';
 import './HeaderTop.scss';
-import Logo from './../../Logo/Logo';
+import Logo from '../../UI/Logo/Logo';
 import Navigation from './Navigation/Navigation';
 
 const HeaderTop: React.FC<{}> = () => {

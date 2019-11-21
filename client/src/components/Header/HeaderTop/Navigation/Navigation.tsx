@@ -1,8 +1,9 @@
 import React from 'react';
 import './Navigation.scss';
 import { connect } from 'react-redux';
-import NavigationItem from './NavigationItem/NavigationItem';
 import { AppState } from './../../../../redux/store';
+import NavigationItem from './NavigationItem/NavigationItem';
+import { allActions } from './../../../../redux/store';
 
 class Navigation extends React.Component<any, any> {
     state = {
@@ -29,7 +30,7 @@ class Navigation extends React.Component<any, any> {
         ));
 
         return (
-            <nav className="top-nav">
+            <nav className="top-nav" onClick={() => allActions.setDocumentTitle('Test')}>
                 <ul className="top-nav__list">{navigationItems}</ul>
             </nav>
         );
@@ -37,7 +38,7 @@ class Navigation extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: AppState) => ({
-    title: state.global.title,
+    title: state.system.title,
 });
 
 export default connect(mapStateToProps)(Navigation);

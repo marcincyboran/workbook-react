@@ -1,7 +1,10 @@
 import { createStore, bindActionCreators } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+
 import rootReducer from './reducer';
-import { globalActions } from './global/index';
+
+import { systemActions } from './system';
+import { searchActions } from './search';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
@@ -10,9 +13,8 @@ const store = createStore(rootReducer, composeWithDevTools());
 
 const allActions = bindActionCreators(
     {
-        setDocumentTitle: globalActions.setDocumentTitle,
-        setUser: globalActions.setUser,
-        clearUser: globalActions.clearUser,
+        ...systemActions,
+        ...searchActions,
     },
     store.dispatch
 );

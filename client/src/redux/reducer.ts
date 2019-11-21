@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import globalReducer from './global/index';
+import systemReducer from './system';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
-    global: globalReducer,
+    system: systemReducer,
+    search: searchReducer,
 });
 
 export default rootReducer;

@@ -11,7 +11,7 @@ export interface User {
     userEmail: string;
 }
 
-export interface GlobalState {
+export interface SystemState {
     title: Title;
     user: User | null;
 }
@@ -30,4 +30,4 @@ interface ClearUser {
     type: typeof CLEAR_USER;
 }
 
-export type GlobalActionsTypes = SetDocumentTitle | SetUser | ClearUser;
+export type SystemActionsTypes = SetDocumentTitle | SetUser | ClearUser;

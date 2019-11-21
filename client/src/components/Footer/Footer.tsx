@@ -1,7 +1,7 @@
 import React from 'react';
 import './Footer.scss';
 import Social from './Social/Social';
-import Logo from '../Logo/Logo';
+import Logo from '../UI/Logo/Logo';
 
 const Footer: React.FC<{}> = () => {
     return (
