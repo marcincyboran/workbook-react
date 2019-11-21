@@ -1,11 +1,11 @@
 import React from 'react';
 import './Logo.scss';
 
-type LogoProps = {
+interface LogoProps {
     link: string;
     type: 'white' | 'color';
     large?: boolean;
-};
+}
 
 const Logo: React.FC<LogoProps> = ({ link, type, large }) => {
     const linkClasses: String[] = ['logo'];

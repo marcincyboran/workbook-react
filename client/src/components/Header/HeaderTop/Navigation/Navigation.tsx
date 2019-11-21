@@ -1,7 +1,10 @@
 import React from 'react';
 import './Navigation.scss';
+import { connect } from 'react-redux';
 import NavigationItem from './NavigationItem/NavigationItem';
-class Navigation extends React.Component<{}, {}> {
+import { AppState } from './../../../../redux/store';
+
+class Navigation extends React.Component<any, any> {
     state = {
         links: [
             { href: '/company', desc: 'Firma' },
@@ -12,7 +15,15 @@ class Navigation extends React.Component<{}, {}> {
         ],
     };
 
+    componentDidUpdate() {
+        document.title = this.props.title;
+    }
+    componentDidMount() {
+        document.title = this.props.title;
+    }
+
     render() {
+        console.log(this.props);
         const navigationItems = this.state.links.map(el => (
             <NavigationItem href={el.href} desc={el.desc} key={el.desc} />
         ));
@@ -25,4 +36,8 @@ class Navigation extends React.Component<{}, {}> {
     }
 }
 
-export default Navigation;
+const mapStateToProps = (state: AppState) => ({
+    title: state.global.title,
+});
+
+export default connect(mapStateToProps)(Navigation);

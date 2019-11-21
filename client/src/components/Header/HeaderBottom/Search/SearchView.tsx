@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { SyntheticEvent } from 'react';
 import './Search.scss';
+import sprite from '../../../../assets/svgs/sprite.svg';
 
-const Search: React.FC = props => {
+interface searchProps {
+    onSubmit: (event: SyntheticEvent) => void;
+}
+
+const Search: React.FC<searchProps> = ({ onSubmit }) => {
     return (
-        <form action="#" className="search">
-            <input type="text" className="search__input search__input-query" name="search" id="search-query" />
+        <form className="search">
+            <input type="text" className="search__input" name="query" />
             <div className="search__pipe">&nbsp;</div>
-            <input type="text" className="search__input search__input-location" name="search" id="search-location" />
+            <input type="text" className="search__input" name="location" />
             <button type="submit" className="search__submit">
                 <svg className="search__submit-icon">
-                    <use xlinkHref={process.env.PUBLIC_URL + '/svgs/sprite.svg#icon-magnifying-glass'} />
+                    <use xlinkHref={`${sprite}#icon-magnifying-glass`} />
                 </svg>
                 <span>Szukaj</span>
             </button>
