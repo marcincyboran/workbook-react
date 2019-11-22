@@ -2,11 +2,12 @@ import React from 'react';
 import './Footer.scss';
 import Social from './Social/Social';
 import Logo from '../UI/Logo/Logo';
+import Container from './../UI/Container/Container';
 
 const Footer: React.FC<{}> = () => {
     return (
         <footer className="footer">
-            <div className="container footer__container">
+            <Container addClass="footer__container">
                 <div className="footer__copyrights">
                     <span>Created by Marcin Cyboran</span>
                     <span>Project based on Pracuj.pl</span>
@@ -18,7 +19,7 @@ const Footer: React.FC<{}> = () => {
                     <Social type="youtube" link="#youtube" disabled />
                     <Social type="linkedin" link="#linkedin" />
                 </div>
-            </div>
+            </Container>
         </footer>
     );
 };

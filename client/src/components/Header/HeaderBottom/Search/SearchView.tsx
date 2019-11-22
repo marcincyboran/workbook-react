@@ -1,22 +1,22 @@
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import './Search.scss';
-import sprite from '../../../../assets/svgs/sprite.svg';
+import PropTypes, { InferProps } from 'prop-types';
+import SvgSprite from './../../../UI/SvgSprite/SvgSprite';
 
-interface searchProps {
-    onSubmit: (event: SyntheticEvent) => void;
-}
+const SearchProp = {
+    onSubmit: PropTypes.func.isRequired,
+};
+type ContainerPropsTypes = InferProps<typeof SearchProp>;
 
-const Search: React.FC<searchProps> = ({ onSubmit }) => {
+const Search: React.FC<ContainerPropsTypes> = ({ onSubmit }) => {
     return (
         <form className="search">
             <input type="text" className="search__input" name="query" />
             <div className="search__pipe">&nbsp;</div>
             <input type="text" className="search__input" name="location" />
             <button type="submit" className="search__submit">
-                <svg className="search__submit-icon">
-                    <use xlinkHref={`${sprite}#icon-magnifying-glass`} />
-                </svg>
-                <span>Szukaj</span>
+                <SvgSprite icon="magnifying-glass" customClass="search__submit-icon" />
+                <span className="search__submit-text">Szukaj</span>
             </button>
         </form>
     );

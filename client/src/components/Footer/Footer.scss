@@ -1,20 +1,16 @@
 .footer {
     background-color: var(--color-gray-light-4);
-    // position: fixed;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
     
+    &-inner > * {
+        flex: 1;
+    }
+
     &__container {
         padding: var(--default-vertical-gap) 0;
         min-height: calc(2 * var(--default-bar-height));
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-    }
-
-    &-inner > * {
-        flex: 1;
     }
 
     &__copyrights > * {

@@ -1,13 +1,15 @@
 import React from 'react';
 import './Logo.scss';
+import PropTypes, { InferProps } from 'prop-types';
 
-interface LogoProps {
-    link: string;
-    type: 'white' | 'color';
-    large?: boolean;
-}
+const LogoProps = {
+    link: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['white', 'color']).isRequired,
+    large: PropTypes.bool,
+};
+type LogoPropsTypes = InferProps<typeof LogoProps>;
 
-const Logo: React.FC<LogoProps> = ({ link, type, large }) => {
+const Logo: React.FC<LogoPropsTypes> = ({ link, type, large }) => {
     const linkClasses: String[] = ['logo'];
     const dotClasses: String[] = ['logo', 'logo__dot'];
 

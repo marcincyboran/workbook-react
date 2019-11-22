@@ -1,0 +1,24 @@
+import React from 'react';
+import './SvgSprite.scss';
+import PropTypes, { InferProps } from 'prop-types';
+import sprite from './../../../assets/svgs/sprite.svg';
+import classes from 'react-style-classes';
+
+const SvgSpriteProps = {
+    icon: PropTypes.string.isRequired,
+    color: PropTypes.oneOf(['primary', 'secondary', 'blank']),
+    customClass: PropTypes.string,
+};
+type SvgSpritePropsTypes = InferProps<typeof SvgSpriteProps>;
+
+const SvgSprite: React.FC<SvgSpritePropsTypes> = ({ icon, customClass, color }) => {
+    const iconClasses = customClass ? customClass : classes('icon', color && `icon--${color}`);
+
+    return (
+        <svg className={iconClasses}>
+            <use xlinkHref={`${sprite}#icon-${icon}`} />
+        </svg>
+    );
+};
+
+export default SvgSprite;

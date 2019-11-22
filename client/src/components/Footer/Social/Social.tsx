@@ -1,23 +1,23 @@
 import React from 'react';
 import classes from 'react-style-classes';
 import './Social.scss';
-import sprite from './../../../assets/svgs/sprite.svg';
+import PropsTypes, { InferProps } from 'prop-types';
+import SvgSprite from './../../UI/SvgSprite/SvgSprite';
 
-interface socialProps {
-    link: string;
-    type: 'facebook' | 'twitter' | 'youtube' | 'linkedin';
-    disabled?: boolean;
-}
+const SocialProps = {
+    link: PropsTypes.string.isRequired,
+    type: PropsTypes.oneOf(['facebook', 'twitter', 'youtube', 'linkedin']).isRequired,
+    disabled: PropsTypes.bool,
+};
+type SocialPropsTypes = InferProps<typeof SocialProps>;
 
-const Social: React.FC<socialProps> = ({ link, type, disabled = false }) => {
+const Social: React.FC<SocialPropsTypes> = ({ link, type, disabled = false }) => {
     const linkHref: string = !disabled ? link : '#';
     const linkClasses: string = classes('f-social', `f-social--${type}`, disabled && 'f-social--noactive');
 
     return (
         <a href={linkHref} className={linkClasses} title={`Odwiedź nas - ${type}`}>
-            <svg className="f-social__icon">
-                <use xlinkHref={`${sprite}#icon-${type}`} />
-            </svg>
+            <SvgSprite icon={type} customClass="f-social__icon" />
         </a>
     );
 };
