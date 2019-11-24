@@ -1,0 +1,39 @@
+@import './../../../style/shared.scss';
+
+.form {
+    &__checkmark {
+        display: inline-block;
+        position: absolute;
+        top: .4rem;
+        left: 0;
+        width: 3.2rem;
+        height: 1.6rem;
+        border: 2px solid var(--color-gray-light-4);
+        border-radius: 3rem;
+        transition: border .3s ease-in-out;
+    
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: .2rem;
+            right: 0;
+            height: 1rem;
+            width: 1.4rem;
+            border-radius: 3rem;
+            transform: translateY(-50%);
+            background-color: var(--color-gray-light-4);
+            transition: all .3s ease-in-out;
+        }
+    }
+    
+    &__checkbox { display: none; }
+    &__checkbox:checked + &__checkmark::before {
+        left: calc(50% - .2rem);
+        background-color: rgba($color-primary-light, .8);
+    }
+    &__checkbox:checked + &__checkmark{
+        border: 2px solid rgba($color-primary-light, .8);
+    }
+}
