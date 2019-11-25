@@ -1,0 +1,154 @@
+@import './../../style/shared.scss';
+
+.form {
+    &__group {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-start;
+        justify-content: space-between;
+        padding: 0 4rem;
+
+        &--submit {
+            // only if text-align center from utility class, else add it here
+            display: block;
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        position: relative;
+        font-size: 1.3em;
+        font-weight: 400;
+        line-height: 1;
+        letter-spacing: 1px;
+        margin-bottom: .8rem;
+        color: var(--color-gray-dark-3);
+    
+        &--checkbox {
+            line-height: 1.4;
+            padding-left: 4rem;
+        }
+
+        &--required::after {
+            content: '*';
+            display: inline;
+            margin-left: .5rem;
+            color: var(--color-primary);
+        }
+    }
+
+    &__checkmark {
+        display: inline-block;
+        position: absolute;
+        top: .4rem;
+        left: 0;
+        width: 3.2rem;
+        height: 1.6rem;
+        border: 2px solid var(--color-gray-light-4);
+        border-radius: 3rem;
+        transition: border .3s ease-in-out;
+
+        &::before {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: .2rem;
+            right: 0;
+            height: 1rem;
+            width: 1.4rem;
+            border-radius: 3rem;
+            transform: translateY(-50%);
+            background-color: var(--color-gray-light-4);
+            transition: all .3s ease-in-out;
+        }
+    }
+
+    &__checkbox { display: none; }
+    &__checkbox:checked + &__checkmark::before {
+        left: calc(50% - .2rem);
+        background-color: rgba($color-primary-light, .8);
+    }
+    &__checkbox:checked + &__checkmark{
+        border: 2px solid rgba($color-primary-light, .8);
+    }
+
+    &__block {
+        position: relative;
+        flex: 0 1 calc(50% - 3rem);
+        margin-bottom: var(--default-horizontal-gap);
+        
+        &--full {
+            flex: 0 1 100%;
+        }
+
+        &--nomargin {
+            margin-bottom: unset;
+        }
+    }
+
+    &__valid-icon {
+        visibility: none;
+        opacity: 0;
+        width: 2.2rem;
+        height: 2.2rem;
+        padding: .3rem;
+        position: absolute;
+        bottom: 1.8rem;
+        right: -1rem;
+        background-color: var(--color-white);
+        border-radius: 50%;
+        border: var(--border-lighter);
+        border-color: var(--color-secondary-light);
+        transform: translateY(50%);
+        fill: rgba($color-secondary-light, .75);
+        transition: opacity .2s ease-in;
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        padding: .8rem 1.6rem;
+        letter-spacing: 1px;
+        border-radius: var(--default-border-radius);
+        border: var(--border-lighter);
+        box-shadow: var(--shadow-form);
+        transition: border-color .2s ease-in-out;
+        
+        &:focus {
+            border-color: var(--color-secondary) !important;
+            box-shadow: var(--shadow-small-middle);
+        }
+
+        &-error {
+            display: inline-block;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 0 1rem;
+            color: var(--color-primary);
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            transform: translateY(100%);
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity .2s ease-in-out;
+        }
+    }
+
+    &__block.valid &__valid-icon {
+        visibility: visible;
+        opacity: 1;
+    }
+    &__block.error  &__input-error {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    &__block.valid &__input { border-color: rgba($color-secondary-light, .75); }
+    &__block.error &__input { border-color: rgba($color-primary-light, .75); }
+    
+}
