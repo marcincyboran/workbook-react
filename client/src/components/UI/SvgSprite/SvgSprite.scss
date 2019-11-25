@@ -1,0 +1,23 @@
+.icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: currentColor;
+
+    &--primary { fill: var(--color-primary); }
+    &--secondary { fill: var(--color-secondary); }
+    &--blank { fill: var(--color-gray-light-4); }
+
+    &--small {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    &--big {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    &--mr {
+        margin-right: calc(var(--default-padding) / 2);
+    }
+}

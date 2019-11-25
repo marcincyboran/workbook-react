@@ -1,10 +1,12 @@
 import React from 'react';
 import './NavigationItem.scss';
+import PropTypes, { InferProps } from 'prop-types';
 
-type NavigationItemProps = {
-    href: string;
-    desc: string;
+const NavigationItemPropsTypes = {
+    href: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
 };
+type NavigationItemProps = InferProps<typeof NavigationItemPropsTypes>;
 
 const NavigationItem: React.FC<NavigationItemProps> = ({ href, desc }) => {
     return (

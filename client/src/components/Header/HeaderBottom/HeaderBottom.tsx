@@ -3,6 +3,7 @@ import './HeaderBottom.scss';
 import Search from './Search/Search';
 import { ParallaxBanner } from 'react-scroll-parallax';
 import headerImg from './../../../assets/imgs/header.jpg';
+import Container from './../../UI/Container/Container';
 
 const HeaderBottom: React.FC<{}> = () => {
     return (
@@ -19,13 +20,13 @@ const HeaderBottom: React.FC<{}> = () => {
                     zIndex: '-1',
                 }}
             />
-            <div className="container">
+            <Container>
                 <h1 className="header-bottom__heading">
                     <span className="header-bottom__heading-text">Tired of unprofessional renovations ?</span>
                     <span className="header-bottom__heading-text">Find & book an expert !</span>
                 </h1>
                 <Search />
-            </div>
+            </Container>
         </section>
     );
 };

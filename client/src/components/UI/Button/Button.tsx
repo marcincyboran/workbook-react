@@ -1,0 +1,34 @@
+import React from 'react';
+import './Button.scss';
+import PropTypes, { InferProps } from 'prop-types';
+import SvgSprite from './../SvgSprite/SvgSprite';
+import classes from 'react-style-classes';
+
+const ButtonProps = {
+    link: PropTypes.string.isRequired,
+    size: PropTypes.oneOf(['big']),
+    color: PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+    icon: PropTypes.string,
+    addClass: PropTypes.string,
+    rotateIcon: PropTypes.oneOf(['90', '180', '270']),
+};
+type ButtonPropsType = InferProps<typeof ButtonProps>;
+
+const Button: React.FC<ButtonPropsType> = ({ link, children, size, color, icon, addClass, rotateIcon }) => {
+    const buttonClasses = classes(
+        'button',
+        addClass,
+        color && `button--${color}`,
+        size && `button--${size}`,
+        icon && `button--icon`,
+        rotateIcon && `button--icon-rotate${rotateIcon}`
+    );
+    return (
+        <a href={link} className={buttonClasses}>
+            <span>{children}</span>
+            {icon && <SvgSprite icon={icon as string} />}
+        </a>
+    );
+};
+
+export default Button;
