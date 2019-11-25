@@ -5,7 +5,7 @@
     background-color: var(--color-white);
     box-shadow: var(--shadow-small-middle);
     border-radius: var(--default-border-radius);
-    margin-top: calc(2 * var(--default-vertical-gap));
+    margin-top: var(--default-vertical-gap);
 
     &__nav {
         position: absolute;
@@ -68,9 +68,8 @@
         transition: transform .6s ease-in-out;
         
         // make bigger element relative for height
-        &--user { transform: translateX(0); }
+        &--user { transform: translateX(0); position: relative; }
         &--company { 
-            position: relative;
             transform: translateX(100%);
         }
 

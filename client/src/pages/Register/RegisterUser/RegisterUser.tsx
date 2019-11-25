@@ -6,6 +6,7 @@ import FormGroup from './../../../components/Form/FormGroup/FormGroup';
 import FieldText from './../../../components/Form/FieldText/FieldText';
 import FieldCheckbox from './../../../components/Form/FieldCheckbox/FieldCheckbox';
 import Heading from './../../../components/UI/Typography/Heading/Heading';
+import FormSubmit from './../../../components/Form/FormSubmit/FormSubmit';
 
 const RegisterUser: React.FC = () => {
     const formik = useFormik({
@@ -14,6 +15,8 @@ const RegisterUser: React.FC = () => {
             lastName: '',
             email: '',
             tel: '',
+            password: '',
+            location: '',
             rodo: false,
         },
         validationSchema: Yup.object({
@@ -28,6 +31,12 @@ const RegisterUser: React.FC = () => {
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
             tel: Yup.string()
+                .min(3, 'Must be min 3 characters long')
+                .required('Required'),
+            password: Yup.string()
+                .min(3, 'Must be min 3 characters long')
+                .required('Required'),
+            location: Yup.string()
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
             rodo: Yup.mixed().required('Zgoda wymagana'),
@@ -70,11 +79,29 @@ const RegisterUser: React.FC = () => {
                     required
                 />
                 <FieldText
-                    label="Imię"
+                    label="Tel"
                     type="text"
                     getFieldProps={formik.getFieldProps('tel')}
                     errors={formik.errors.tel as string}
                     touched={formik.touched.tel as boolean}
+                    required
+                />
+            </FormGroup>
+            <FormGroup>
+                <FieldText
+                    label="Hasło"
+                    type="password"
+                    getFieldProps={formik.getFieldProps('password')}
+                    errors={formik.errors.password as string}
+                    touched={formik.touched.password as boolean}
+                    required
+                />
+                <FieldText
+                    label="Miasto"
+                    type="text"
+                    getFieldProps={formik.getFieldProps('location')}
+                    errors={formik.errors.location as string}
+                    touched={formik.touched.location as boolean}
                     required
                 />
             </FormGroup>
@@ -84,7 +111,7 @@ const RegisterUser: React.FC = () => {
                     regulamin.
                 </FieldCheckbox>
             </FormGroup>
-            <button type="submit">Send</button>
+            <FormSubmit color="secondary">Zarejsetruj</FormSubmit>
         </Form>
     );
 };

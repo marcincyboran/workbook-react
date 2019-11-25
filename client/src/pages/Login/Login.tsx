@@ -1,63 +1,97 @@
 import React from 'react';
 import './Login.scss';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import http from './../../helpers/axios';
+import Form from './../../components/Form/Form';
+import FormGroup from './../../components/Form/FormGroup/FormGroup';
+import FieldText from './../../components/Form/FieldText/FieldText';
+import FormSubmit from './../../components/Form/FormSubmit/FormSubmit';
 import List from './../../components/UI/List/List';
 import Button from './../../components/UI/Button/Button';
 import Logo from './../../components/UI/Logo/Logo';
+import Heading from './../../components/UI/Typography/Heading/Heading';
+import Paragraph from './../../components/UI/Typography/Paragraph/Paragraph';
 
 const LoginPage: React.FC = () => {
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+        },
+        validationSchema: Yup.object({
+            email: Yup.string()
+                .email('Please use a valid e-mail address.')
+                .min(5, 'Must be min 5 characters long')
+                .required('Required'),
+            password: Yup.string()
+                .min(8, 'Must be min 8 characters long')
+                .required('Required'),
+        }),
+        onSubmit: async values => {
+            const response = await http.post('login', values);
+            console.log(response);
+            alert(JSON.stringify(values, null, 2));
+        },
+    });
+
     return (
         <section className="login u-mt-fixed">
             <div className="login__left">
-                <p className="heading-primary heading-primary--primary u-mb-big">Dla CIEBIE</p>
-                <p className="paragraph paragraph--big u-mb-big">
+                <Heading tag="h2" type="primary" mod="primary" className="login__title">
+                    Dla CIEBIE
+                </Heading>
+                <Paragraph mod="big" className="login__description">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius dignissimos?
-                </p>
-                <List addClass="u-mb-big" items={['Znajdź wykonawcę', 'Dodawaj oferty', 'Oceniaj usługi']} />
-                <Button link="/registration:user" color="secondary" icon="magnifying-glass">
-                    Zarejsetruj
+                </Paragraph>
+                <List addClass="login__list" items={['Znajdź wykonawcę', 'Dodawaj oferty', 'Oceniaj usługi']} />
+                <Button link="/register" color="secondary" icon="magnifying-glass">
+                    Zarejestruj
                 </Button>
             </div>
             <div className="login__center">
                 <Logo link="#" type="white" />
-                <form className="login__form">
-                    <div className="form__group u-mb-huge">
-                        <div className="form__block form__block--full  form__block--nomargin">
-                            <input type="text" className="form__input" name="e-mail" required placeholder="E-mail" />
-                            <svg className="form__valid-icon">
-                                <use href="./assets/svgs/sprite.svg#icon-check"></use>
-                            </svg>
-                            <span className="form__input-error">Błędny adress e-mail</span>
-                        </div>
-                    </div>
-                    <div className="form__group u-mb-huge">
-                        <div className="form__block form__block--full  form__block--nomargin">
-                            <input type="text" className="form__input" name="pass" required placeholder="Hasło" />
-                            <svg className="form__valid-icon">
-                                <use href="./assets/svgs/sprite.svg#icon-check"></use>
-                            </svg>
-                            <span className="form__input-error">Hasło jest niepoprawne</span>
-                        </div>
-                    </div>
-                    <div className="form__group form__group--submit">
-                        <Button link="#submit" icon="chevron-down" rotateIcon="270">
-                            Zaloguj
-                        </Button>
-                    </div>
-                </form>
+                <Form className="login__form" handleSubmit={formik.handleSubmit}>
+                    <FormGroup>
+                        <FieldText
+                            label=""
+                            type="email"
+                            getFieldProps={formik.getFieldProps('email')}
+                            errors={formik.errors.email as string}
+                            touched={formik.touched.email as boolean}
+                            placeholder="Email"
+                        />
+                    </FormGroup>
+                    <FormGroup>
+                        <FieldText
+                            label=""
+                            type="text"
+                            getFieldProps={formik.getFieldProps('password')}
+                            errors={formik.errors.password as string}
+                            touched={formik.touched.password as boolean}
+                            placeholder="Hasło"
+                        />
+                    </FormGroup>
+                    <FormSubmit color="white" icon>
+                        Zaloguj
+                    </FormSubmit>
+                </Form>
             </div>
             <div className="login__right">
-                <p className="heading-primary heading-primary--primary u-mb-big ">Dla FIRM</p>
-                <p className="paragraph paragraph--big u-mb-big">
+                <Heading tag="h2" type="primary" mod="primary" className="login__title">
+                    Dla FIRM
+                </Heading>
+                <Paragraph mod="big" className="login__description">
                     Lorem ipsum dolor sit amet, consectetur adipisicmos impedit numquam necessitatibus voluptatibus
                     eligendi laboriosam?
-                </p>
+                </Paragraph>
                 <List
-                    addClass="u-mb-big"
+                    addClass="login__list"
                     items={['Przedstaw firmę', 'Dodawaj oferty', 'Przedstawiaj projkety']}
                     type="reversed"
                 />
-                <Button link="/registration:company" color="secondary" icon="magnifying-glass">
-                    Zarejsetruj
+                <Button link="/register" color="secondary" icon="magnifying-glass">
+                    Zarejestruj
                 </Button>
             </div>
         </section>

@@ -1,7 +1,7 @@
 import * as types from './types';
 
 const initialStore: types.SystemState = {
-    title: 'INITIAL_TITLE',
+    title: 'WorkBook',
     user: null,
 };
 

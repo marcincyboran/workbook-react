@@ -10,9 +10,7 @@ const AppWrapper: React.FC = props => {
         <>
             <Header />
             <Container>
-                <main className="main-content" style={{ minHeight: 'calc(100vh - 67rem)' }}>
-                    {props.children}
-                </main>
+                <main className="main-content">{props.children}</main>
             </Container>
             <Footer />
         </>

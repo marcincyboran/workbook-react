@@ -25,7 +25,6 @@ class Navigation extends React.Component<any, any> {
     }
 
     render() {
-        console.log(this.props);
         const navigationItems = this.state.links.map(el => (
             <NavigationItem href={el.href} desc={el.desc} key={el.desc} />
         ));

@@ -8,11 +8,14 @@ const SvgSpriteProps = {
     icon: PropTypes.string.isRequired,
     color: PropTypes.oneOf(['primary', 'secondary', 'blank']),
     customClass: PropTypes.string,
+    rotate: PropTypes.oneOf(['90', '180', '270']),
 };
 type SvgSpritePropsTypes = InferProps<typeof SvgSpriteProps>;
 
-const SvgSprite: React.FC<SvgSpritePropsTypes> = ({ icon, customClass, color }) => {
-    const iconClasses = customClass ? customClass : classes('icon', color && `icon--${color}`);
+const SvgSprite: React.FC<SvgSpritePropsTypes> = ({ icon, customClass, color, rotate }) => {
+    const iconClasses = customClass
+        ? customClass
+        : classes('icon', color && `icon--${color}`, rotate && `icon--rotate${rotate}`);
 
     return (
         <svg className={iconClasses}>

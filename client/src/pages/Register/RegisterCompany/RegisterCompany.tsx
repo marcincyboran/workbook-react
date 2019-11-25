@@ -6,6 +6,7 @@ import FormGroup from './../../../components/Form/FormGroup/FormGroup';
 import FieldText from './../../../components/Form/FieldText/FieldText';
 import FieldCheckbox from './../../../components/Form/FieldCheckbox/FieldCheckbox';
 import Heading from '../../../components/UI/Typography/Heading/Heading';
+import FormSubmit from './../../../components/Form/FormSubmit/FormSubmit';
 
 const RegisterCompany: React.FC = () => {
     const formik = useFormik({
@@ -90,7 +91,7 @@ const RegisterCompany: React.FC = () => {
                     regulamin.
                 </FieldCheckbox>
             </FormGroup>
-            <button type="submit">Send</button>
+            <FormSubmit color="tertiary">Zarejsetruj</FormSubmit>
         </Form>
     );
 };

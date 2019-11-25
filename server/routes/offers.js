@@ -158,10 +158,11 @@ const aside = {
 };
 
 router.get('/', (req, res) => {
+    console.log(req);
     // Pretend database delay
-    setTimeout(function() {
-        res.send({ offers, aside });
-    }, 1000);
+    // setTimeout(function() {
+    //     res.send({ offers, aside });
+    // }, 1000);
 });
 
 router.get('/:id', async (req, res) => {

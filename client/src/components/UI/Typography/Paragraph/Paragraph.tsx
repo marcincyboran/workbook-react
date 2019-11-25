@@ -5,8 +5,8 @@ import PropTypes, { InferProps } from 'prop-types';
 import Helper from './../../../../helpers/shared';
 
 const ParagraphProps = {
-    mod: PropTypes.string,
     className: PropTypes.string,
+    mod: PropTypes.string,
 };
 type ParagraphPropsTypes = InferProps<typeof ParagraphProps>;
 

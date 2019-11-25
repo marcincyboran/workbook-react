@@ -1,6 +1,7 @@
 import React from 'react';
 import './Logo.scss';
 import PropTypes, { InferProps } from 'prop-types';
+// import classes from 'react-style-classes';
 
 const LogoProps = {
     link: PropTypes.string.isRequired,
@@ -11,7 +12,7 @@ type LogoPropsTypes = InferProps<typeof LogoProps>;
 
 const Logo: React.FC<LogoPropsTypes> = ({ link, type, large }) => {
     const linkClasses: String[] = ['logo'];
-    const dotClasses: String[] = ['logo', 'logo__dot'];
+    const dotClasses: String[] = ['logo__dot'];
 
     [linkClasses, dotClasses].forEach(el => el.push(`logo--${type}`));
     if (type === 'color') dotClasses.push('logo--primary');
@@ -25,3 +26,5 @@ const Logo: React.FC<LogoPropsTypes> = ({ link, type, large }) => {
 };
 
 export default Logo;
+
+// TODO classes
