@@ -1,4 +1,6 @@
 require('dotenv').config({ path: './config/config.env' });
+require('colors');
+
 const express = require('express');
 const app = express();
 
@@ -6,6 +8,7 @@ require('./startup/setup')(app);
 require('./startup/db')();
 require('./startup/logger')(app);
 require('./startup/routes')(app);
+require('./startup/errors')(app);
 
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, () => {

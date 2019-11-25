@@ -4,6 +4,6 @@ const fileUpload = require('express-fileupload');
 
 module.exports = app => {
     app.use(express.json());
-    app.use(fileUpload({ debug: true }));
+    // app.use(fileUpload({ debug: true }));
     app.use(express.static(path.join(`${__dirname}/public`)));
 };
