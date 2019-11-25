@@ -1,0 +1,6 @@
+.paragraph {
+    font-size: 1.2rem;
+
+    &--big { font-size: 1.4rem; }
+    &--bold {font-weight: 600; }
+}

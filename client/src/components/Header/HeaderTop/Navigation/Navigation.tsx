@@ -13,6 +13,7 @@ class Navigation extends React.Component<any, any> {
             { href: '/offers', desc: 'Oferty' },
             { href: '/offer', desc: 'Oferta' },
             { href: '/login', desc: 'Login' },
+            { href: '/register', desc: 'Register' },
         ],
     };
 
