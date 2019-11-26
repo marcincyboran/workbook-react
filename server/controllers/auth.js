@@ -1,13 +1,14 @@
 const ErrorResponse = require('../utilities/errorResponse');
 const asyncHandler = require('../middleware/async');
 const Account = require('../models/Account');
+const _ = require('lodash/object');
 
 // @desc    Create new account
 // @route   POST /api/v1/auth/register
 // @acces   PUBLIC
 module.exports.register = asyncHandler(async (req, res, next) => {
     const createdAcc = await Account.create(req.body);
-    sendToken(createdAcc, res);
+    sendToken(createdAcc, res, 201);
 });
 
 // @desc    Login
@@ -16,9 +17,8 @@ module.exports.register = asyncHandler(async (req, res, next) => {
 module.exports.login = asyncHandler(async (req, res, next) => {
     // Check for data
     if (!req.body.email || !req.body.password) return next(new ErrorResponse('Please add email and password.', 400));
-
     // Check for acc
-    const account = await Account.findOne({ email: req.email }).select('+password');
+    const account = await Account.findOne({ email: req.body.email }).select('+password');
 
     // Validate if acc exist
     if (!account) return next(new ErrorResponse('Inavlid credentials.', 401));
@@ -27,7 +27,7 @@ module.exports.login = asyncHandler(async (req, res, next) => {
     const isPassSame = await account.comparePasswords(req.body.password);
     if (!isPassSame) return next(new ErrorResponse('Invalid credentials', 401));
 
-    sendToken(account, res);
+    sendToken(account, res, 200);
 });
 
 // @desc    Get all accounts
@@ -41,10 +41,13 @@ module.exports.getAllAccounts = asyncHandler(async (req, res, next) => {
     });
 });
 
-const sendToken = (account, res) => {
-    const token = account.genJWT();
-    res.status(201).json({
+const sendToken = (account, res, status) => {
+    const token = account.genJwt();
+    res.status(status).json({
         success: true,
-        data: token,
+        payload: {
+            token,
+            account: _.pick(account, ['email', 'firstName', 'role', 'premium']),
+        },
     });
 };

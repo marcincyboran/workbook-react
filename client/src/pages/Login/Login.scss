@@ -26,7 +26,21 @@
     &__title { margin-bottom: 1rem; }
     &__list, 
     &__description { margin-bottom: 1.5rem; }
+    &__error-message {
+        position: absolute;
+        bottom: 2rem;
+        left: 4rem;
+        right: 4rem;
+        font-size: 1.2rem;
+        color: var(--color-white);
+        opacity: 0;
+        transition: opacity 400ms;
 
+        &.in { opacity: 1}
+    }
+    .form__valid-icon {
+        display: none;
+    }
     &__center {
         flex: 1;
         padding:
@@ -53,7 +67,7 @@
             border-radius: 5rem;
         }
         & .form__input-error {
-            color: var(--color-secondary-dark);
+            color: var(--color-white);
             text-align: center;
         }
     }

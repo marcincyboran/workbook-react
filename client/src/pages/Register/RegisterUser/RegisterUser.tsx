@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
+import http from '../../../helpers/axios';
 import { useFormik } from 'formik';
+import { useHistory } from 'react-router-dom';
+import Helpers from '../../../helpers/shared';
+
 import Form from './../../../components/Form/Form';
 import FormGroup from './../../../components/Form/FormGroup/FormGroup';
 import FieldText from './../../../components/Form/FieldText/FieldText';
@@ -9,6 +13,9 @@ import Heading from './../../../components/UI/Typography/Heading/Heading';
 import FormSubmit from './../../../components/Form/FormSubmit/FormSubmit';
 
 const RegisterUser: React.FC = () => {
+    const [errorMessage, setError] = useState('');
+    const history = useHistory();
+
     const formik = useFormik({
         initialValues: {
             firstName: '',
@@ -16,7 +23,7 @@ const RegisterUser: React.FC = () => {
             email: '',
             tel: '',
             password: '',
-            location: '',
+            address: '',
             rodo: false,
         },
         validationSchema: Yup.object({
@@ -30,19 +37,25 @@ const RegisterUser: React.FC = () => {
                 .email('Please use a valid e-mail')
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
-            tel: Yup.string()
-                .min(3, 'Must be min 3 characters long')
-                .required('Required'),
+            tel: Yup.string().min(3, 'Must be min 3 characters long'),
             password: Yup.string()
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
-            location: Yup.string()
+            address: Yup.string()
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
-            rodo: Yup.mixed().required('Zgoda wymagana'),
         }),
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+        onSubmit: async values => {
+            formik.resetForm();
+            setError('');
+            try {
+                const res = await http.post('auth/register', { ...values, role: 'user' });
+                Helpers.userFromResponse(res);
+                history.push('/login');
+            } catch (err) {
+                Helpers.clearUser();
+                if (err.response.status === 401) setError('Something went wrong, try again later.');
+            }
         },
     });
 
@@ -84,7 +97,6 @@ const RegisterUser: React.FC = () => {
                     getFieldProps={formik.getFieldProps('tel')}
                     errors={formik.errors.tel as string}
                     touched={formik.touched.tel as boolean}
-                    required
                 />
             </FormGroup>
             <FormGroup>
@@ -99,9 +111,9 @@ const RegisterUser: React.FC = () => {
                 <FieldText
                     label="Miasto"
                     type="text"
-                    getFieldProps={formik.getFieldProps('location')}
-                    errors={formik.errors.location as string}
-                    touched={formik.touched.location as boolean}
+                    getFieldProps={formik.getFieldProps('address')}
+                    errors={formik.errors.address as string}
+                    touched={formik.touched.address as boolean}
                     required
                 />
             </FormGroup>

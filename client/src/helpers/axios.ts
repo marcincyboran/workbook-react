@@ -1,9 +1,12 @@
 import axios from 'axios';
+import { store } from '../redux/store';
+import CONSTANTS from './constants';
 
-axios.defaults.baseURL = process.env.API_URL || 'https://localhost:3001/api/v1/';
+axios.defaults.baseURL = process.env.API_URL || `http://localhost:5000/api/v1/`;
 axios.interceptors.request.use(req => {
-    const token = localStorage.getItem('wb-auth-token');
-    if (token) req.headers['X-Auth'] = `Bearer ${token}`;
+    const system = store.getState().system;
+    const token = system.user ? system.user.token : localStorage.getItem(CONSTANTS.WB_AUTH_TOKEN);
+    if (token) req.headers[CONSTANTS.AUTH_HEADER_NAME] = `Bearer ${token}`;
     return req;
 });
 
@@ -13,7 +16,6 @@ axios.interceptors.response.use(
     },
     error => {
         console.log('Interceptor error logger');
-        console.log(error);
         return Promise.reject(error);
     }
 );

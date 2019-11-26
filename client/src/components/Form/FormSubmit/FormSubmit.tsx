@@ -22,7 +22,7 @@ const FormSubmit: React.FC<propsType> = ({ children, color, custom, icon }) => {
 
     return (
         <div className="form__submit-wrapper">
-            <button className={buttonClasses}>
+            <button className={buttonClasses} type="submit">
                 <span>{children}</span>
                 {icon && <SvgSprite icon="chevron-down" rotate="270" />}
             </button>

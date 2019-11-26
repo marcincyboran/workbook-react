@@ -1,3 +1,4 @@
 export default {
-    TEST: 'TEST',
+    WB_AUTH_TOKEN: 'Workbook-Auth-Token',
+    AUTH_HEADER_NAME: 'X-Auth-Token',
 };

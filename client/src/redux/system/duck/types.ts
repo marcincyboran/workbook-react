@@ -5,10 +5,11 @@ export const CLEAR_USER = 'CLEAR_USER';
 export type Title = string;
 
 export interface User {
-    userName: string;
-    userId: string;
-    userRole: string;
-    userEmail: string;
+    token: string;
+    firstName: string;
+    email: string;
+    role: string;
+    premium: string;
 }
 
 export interface SystemState {

@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.scss';
-import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import http from './../../helpers/axios';
-import Form from './../../components/Form/Form';
-import FormGroup from './../../components/Form/FormGroup/FormGroup';
-import FieldText from './../../components/Form/FieldText/FieldText';
-import FormSubmit from './../../components/Form/FormSubmit/FormSubmit';
-import List from './../../components/UI/List/List';
-import Button from './../../components/UI/Button/Button';
-import Logo from './../../components/UI/Logo/Logo';
-import Heading from './../../components/UI/Typography/Heading/Heading';
-import Paragraph from './../../components/UI/Typography/Paragraph/Paragraph';
+import { useFormik } from 'formik';
+import { RouteComponentProps } from 'react-router-dom';
+import { allActions } from '../../redux/store';
+import Helpers from '../../helpers/shared';
+import http from '../../helpers/axios';
 
-const LoginPage: React.FC = () => {
+import Form from '../../components/Form/Form';
+import FormGroup from '../../components/Form/FormGroup/FormGroup';
+import FieldText from '../../components/Form/FieldText/FieldText';
+import FormSubmit from '../../components/Form/FormSubmit/FormSubmit';
+import List from '../../components/UI/List/List';
+import Button from '../../components/UI/Button/Button';
+import Logo from '../../components/UI/Logo/Logo';
+import Heading from '../../components/UI/Typography/Heading/Heading';
+import Paragraph from '../../components/UI/Typography/Paragraph/Paragraph';
+
+const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
+    const [errorMessage, setError] = useState('');
+    useEffect(() => {
+        allActions.setDocumentTitle('Login');
+    }, []);
+
     const formik = useFormik({
         initialValues: {
             email: '',
@@ -21,22 +30,29 @@ const LoginPage: React.FC = () => {
         },
         validationSchema: Yup.object({
             email: Yup.string()
-                .email('Please use a valid e-mail address.')
+                .email('Please use a valid e-mail address')
                 .min(5, 'Must be min 5 characters long')
-                .required('Required'),
+                .required('This field is required'),
             password: Yup.string()
-                .min(8, 'Must be min 8 characters long')
-                .required('Required'),
+                .min(8, 'Must be min 8 characters long.')
+                .required('This field is required'),
         }),
         onSubmit: async values => {
-            const response = await http.post('login', values);
-            console.log(response);
-            alert(JSON.stringify(values, null, 2));
+            formik.resetForm();
+            setError('');
+            try {
+                const res = await http.post('auth/login', values);
+                Helpers.userFromResponse(res);
+                history.push('/');
+            } catch (err) {
+                Helpers.clearUser();
+                if (err.response.status === 401) setError('Invalid email or password.');
+            }
         },
     });
 
     return (
-        <section className="login u-mt-fixed">
+        <section className="login">
             <div className="login__left">
                 <Heading tag="h2" type="primary" mod="primary" className="login__title">
                     Dla CIEBIE
@@ -65,7 +81,7 @@ const LoginPage: React.FC = () => {
                     <FormGroup>
                         <FieldText
                             label=""
-                            type="text"
+                            type="password"
                             getFieldProps={formik.getFieldProps('password')}
                             errors={formik.errors.password as string}
                             touched={formik.touched.password as boolean}
@@ -76,6 +92,7 @@ const LoginPage: React.FC = () => {
                         Zaloguj
                     </FormSubmit>
                 </Form>
+                <span className={`login__error-message ${errorMessage ? 'in' : ''}`}>{errorMessage}</span>
             </div>
             <div className="login__right">
                 <Heading tag="h2" type="primary" mod="primary" className="login__title">
