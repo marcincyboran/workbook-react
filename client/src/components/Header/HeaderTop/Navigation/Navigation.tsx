@@ -8,12 +8,12 @@ import { allActions } from './../../../../redux/store';
 class Navigation extends React.Component<any, any> {
     state = {
         links: [
-            { href: '/company', desc: 'Firma' },
-            { href: '/companies', desc: 'Firmy' },
-            { href: '/offers', desc: 'Oferty' },
-            { href: '/offer', desc: 'Oferta' },
-            { href: '/login', desc: 'Login' },
-            { href: '/register', desc: 'Register' },
+            { link: '/company', desc: 'Firma' },
+            { link: '/companies', desc: 'Firmy' },
+            { link: '/offers', desc: 'Oferty' },
+            { link: '/offer', desc: 'Oferta' },
+            { link: '/login', desc: 'Login' },
+            { link: '/register', desc: 'Register' },
         ],
     };
 
@@ -26,7 +26,7 @@ class Navigation extends React.Component<any, any> {
 
     render() {
         const navigationItems = this.state.links.map(el => (
-            <NavigationItem href={el.href} desc={el.desc} key={el.desc} />
+            <NavigationItem link={el.link} desc={el.desc} key={el.desc} />
         ));
 
         return (

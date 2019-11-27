@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './Offers.scss';
 import http from '../../helpers/axios';
 import Offer from '../../components/Offer/Offer';
+import Heading from '../../components/UI/Typography/Heading/Heading';
+import Loader from '../../components/UI/Loader/Loader';
 
 const OffersPage: React.FC<{}> = () => {
     const [data, setData] = useState([]);
@@ -25,10 +27,14 @@ const OffersPage: React.FC<{}> = () => {
 
     return (
         <>
-            <p>Offers Page</p>
-            {data.length > 0
-                ? data.map((offerElement: any) => <Offer key={offerElement.id} offerData={offerElement} />)
-                : 'spiner'}
+            <Heading tag="h2" type="primary" className="offers__heading">
+                Offers List
+            </Heading>
+            {data.length > 0 ? (
+                data.map((offerElement: any) => <Offer key={offerElement.id} offerData={offerElement} />)
+            ) : (
+                <Loader />
+            )}
         </>
     );
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Button.scss';
+import { Link } from 'react-router-dom';
 import PropTypes, { InferProps } from 'prop-types';
 import SvgSprite from './../SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
@@ -23,10 +24,10 @@ const Button: React.FC<ButtonPropsType> = ({ link, children, size, color, icon, 
         icon && `button--icon`
     );
     return (
-        <a href={link} className={buttonClasses}>
+        <Link to={link} className={buttonClasses}>
             <span>{children}</span>
             {icon && <SvgSprite icon={icon as string} rotate={rotateIcon ? rotateIcon : null} />}
-        </a>
+        </Link>
     );
 };
 

@@ -28,8 +28,8 @@ const Root: React.FC = () => {
                         <Route path="/register" component={RegisterPage} />
                         <Route path="/account" component={AccountPage} />
                         <Route path="/admin" component={AdminPage} />
-                        <Redirect to="/404" />
                         <Route path="/404" component={NoMatchPage} />
+                        <Redirect to="/404" />
                     </Switch>
                 </AppWrapper>
             </Route>

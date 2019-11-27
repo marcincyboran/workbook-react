@@ -38,8 +38,8 @@
         border-bottom: 2px solid transparent;
         position: relative;
         transition: color .3s .3s;
-        z-index: 10;
-
+        // z-index: 10;
+        
         &:link,
         &:visited {
             font-size: 1.6rem;
@@ -47,6 +47,9 @@
             text-decoration: none;
             text-transform: uppercase;
             display: inline-block;
+
         }
+        
+        &.active { color: var(--color-primary); }
     }
 }

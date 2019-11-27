@@ -1,19 +1,20 @@
 import React from 'react';
 import './NavigationItem.scss';
 import PropTypes, { InferProps } from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 const NavigationItemPropsTypes = {
-    href: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
     desc: PropTypes.string.isRequired,
 };
 type NavigationItemProps = InferProps<typeof NavigationItemPropsTypes>;
 
-const NavigationItem: React.FC<NavigationItemProps> = ({ href, desc }) => {
+const NavigationItem: React.FC<NavigationItemProps> = ({ link, desc }) => {
     return (
         <li className="top-nav__item">
-            <a href={href} title={desc} className="top-nav__link">
+            <NavLink className="top-nav__link" activeClassName="active" to={link} title={desc}>
                 {desc}
-            </a>
+            </NavLink>
         </li>
     );
 };

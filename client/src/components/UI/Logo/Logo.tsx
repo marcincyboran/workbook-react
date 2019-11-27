@@ -1,6 +1,7 @@
 import React from 'react';
 import './Logo.scss';
 import PropTypes, { InferProps } from 'prop-types';
+import { Link } from 'react-router-dom';
 // import classes from 'react-style-classes';
 
 const LogoProps = {
@@ -19,9 +20,9 @@ const Logo: React.FC<LogoPropsTypes> = ({ link, type, large }) => {
     if (large) linkClasses.push('logo--large');
 
     return (
-        <a href={link} className={linkClasses.join(' ')}>
+        <Link to={link} className={linkClasses.join(' ')}>
             Work<span className={dotClasses.join(' ')}>.</span>Book
-        </a>
+        </Link>
     );
 };
 

@@ -12,7 +12,7 @@ const Footer: React.FC<{}> = () => {
                     <span>Created by Marcin Cyboran</span>
                     <span>Project based on Pracuj.pl</span>
                 </div>
-                <Logo link="/test" type="white" large />
+                <Logo link="/" type="white" large />
                 <div className="footer__socials">
                     <Social type="facebook" link="#facebook" />
                     <Social type="twitter" link="#twitter" disabled />
