@@ -37,7 +37,7 @@ module.exports.getAllAccounts = asyncHandler(async (req, res, next) => {
     const accounts = await Account.find();
     res.status(200).json({
         success: true,
-        data: accounts,
+        payload: accounts,
     });
 });
 

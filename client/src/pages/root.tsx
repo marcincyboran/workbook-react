@@ -7,7 +7,7 @@ import AdminPage from './Admin/Admin';
 import CompaniesPage from './Companies/Companies';
 import CompanyPage from './Company/Company';
 import OffersPage from './Offers/Offers';
-import OfferPage from './Offer/Offer';
+import OfferDetailsPage from './OfferDetails/OfferDetails';
 import LoginPage from './Login/Login';
 import RegisterPage from './Register/Register';
 import NoMatchPage from './NoMatch/NoMatch';
@@ -23,7 +23,7 @@ const Root: React.FC = () => {
                         <Route path="/companies" exact component={CompaniesPage} />
                         <Route path="/companies/:id" component={CompanyPage} />
                         <Route path="/offers" exact component={OffersPage} />
-                        <Route path="/offers/:id" component={OfferPage} />
+                        <Route path="/offers/:id" component={OfferDetailsPage} />
                         <Route path="/login" component={LoginPage} />
                         <Route path="/register" component={RegisterPage} />
                         <Route path="/account" component={AccountPage} />

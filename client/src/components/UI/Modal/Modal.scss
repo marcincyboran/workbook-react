@@ -1,0 +1,45 @@
+@import '../../../style/shared.scss';
+
+.modal {
+    position: fixed;
+    top: 10rem;
+    left: 50%;
+    min-width: 40rem;
+    min-height: 40rem;
+    transform: translateX(100vw);
+    box-shadow: var(--shadow-big-dark);
+    background-color: var(--color-white);
+    transition: transform .4s ease-in-out;
+    border-bottom-right-radius: var(--mid-border-radius);
+    border-bottom-left-radius: var(--mid-border-radius);
+    border-top-left-radius: var(--mid-border-radius);
+    z-index: 200;
+
+    &--active {
+        transform: translateX(-50%);
+    }
+
+    &__close {
+        color: var(--color-primary);
+        background-color: var(--color-white);
+        position: absolute;
+        top: 0;
+        right: -3rem;
+        height: 3rem;
+        width: 3rem;
+        border-top-right-radius: var(--mid-border-radius);
+        border-bottom-right-radius: var(--mid-border-radius);
+        border-left: var(--border-lighter);
+        line-height: 1.2;
+        font-size: 2.6rem;
+        text-align: center;
+        cursor: pointer;
+        @include noselect;
+
+        &:hover { color: var(--color-secondary); }
+    }
+
+    &__content {
+        padding: var(--default-padding);
+    }
+}

@@ -15,8 +15,10 @@ const RegisterCompany: React.FC = () => {
             lastName: '',
             email: '',
             tel: '',
+            password: '',
+            address: '',
             rodo: false,
-            rodo2: true,
+            rodo2: false,
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -29,7 +31,11 @@ const RegisterCompany: React.FC = () => {
                 .email('Please use a valid e-mail')
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
-            tel: Yup.string()
+            tel: Yup.string().min(3, 'Must be min 3 characters long'),
+            password: Yup.string()
+                .min(3, 'Must be min 3 characters long')
+                .required('Required'),
+            address: Yup.string()
                 .min(3, 'Must be min 3 characters long')
                 .required('Required'),
             rodo: Yup.mixed().required('Zgoda wymagana'),

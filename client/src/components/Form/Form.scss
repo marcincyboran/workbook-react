@@ -1,6 +1,8 @@
 @import './../../style//shared.scss';
 
 .form {
+    position: relative;
+    
     &__label {
         display: inline-block;
         position: relative;
@@ -80,6 +82,19 @@
             opacity: 0;
             transition: opacity .4s ease-in-out;
         }
+    }
+
+    &__error-message {
+        position: absolute;
+        bottom: 2rem;
+        left: 4rem;
+        right: 4rem;
+        font-size: 1.2rem;
+        text-align: center;
+        color: var(--color-primary);
+        opacity: 0;
+        transition: opacity 400ms;
+        &.in { opacity: 1}
     }
 
     &__block.valid &__valid-icon {

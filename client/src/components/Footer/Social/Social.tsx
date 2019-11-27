@@ -17,7 +17,7 @@ const Social: React.FC<SocialPropsTypes> = ({ link, type, disabled = false }) =>
 
     return (
         <a href={linkHref} className={linkClasses} title={`Odwiedź nas - ${type}`}>
-            <SvgSprite icon={type} customClass="f-social__icon" />
+            <SvgSprite icon={type} className="f-social__icon" />
         </a>
     );
 };

@@ -46,7 +46,8 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
                 history.push('/');
             } catch (err) {
                 Helpers.clearUser();
-                if (err.response.status === 401) setError('Invalid email or password.');
+                if (err.response.status === 401) return setError('Invalid email or password.');
+                setError('Something went wrong, try again');
             }
         },
     });
@@ -67,7 +68,7 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
             </div>
             <div className="login__center">
                 <Logo link="#" type="white" />
-                <Form className="login__form" handleSubmit={formik.handleSubmit}>
+                <Form className="login__form" handleSubmit={formik.handleSubmit} useCustomError>
                     <FormGroup>
                         <FieldText
                             label=""

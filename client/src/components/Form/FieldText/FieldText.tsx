@@ -40,7 +40,7 @@ const FieldText: React.FC<FieldTextPropsTypes> = ({
                 {...getFieldProps}
                 placeholder={placeholder ? placeholder : ''}
             />
-            <SvgSprite customClass="form__valid-icon" icon="check" />
+            <SvgSprite className="form__valid-icon" icon="check" />
             <span className="form__input-error">{errors}</span>
         </div>
     );

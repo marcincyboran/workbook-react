@@ -54,13 +54,14 @@ const RegisterUser: React.FC = () => {
                 history.push('/login');
             } catch (err) {
                 Helpers.clearUser();
-                if (err.response.status === 401) setError('Something went wrong, try again later.');
+                if (err.response.status === 400) return setError('This e-mail address is already in use');
+                return setError('Something went wrong, try again');
             }
         },
     });
 
     return (
-        <Form className="login__form" handleSubmit={formik.handleSubmit}>
+        <Form className="register__form" handleSubmit={formik.handleSubmit} errorMessage={errorMessage}>
             <Heading tag="h2" type="primary" className="register__form-heading">
                 Formularz rejestracyjny dla użytkowników
             </Heading>

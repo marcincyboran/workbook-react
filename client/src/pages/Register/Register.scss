@@ -51,6 +51,11 @@
     }
     
     &__form {
+        position: relative;
+        flex: 1;
+        padding: calc(2 * var(--default-padding));
+        padding-bottom: calc(4 * var(--default-padding));
+
         &-heading { 
             text-align: center;
             margin-bottom: 4.5rem;
@@ -71,12 +76,6 @@
         &--user { transform: translateX(0); position: relative; }
         &--company { 
             transform: translateX(100%);
-        }
-
-        & .form {
-            flex: 1;
-            padding: calc(2 * var(--default-padding));
-            padding-bottom: calc(4 * var(--default-padding))
         }
     }
 
