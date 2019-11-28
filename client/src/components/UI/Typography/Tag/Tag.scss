@@ -1,18 +1,15 @@
 .tag {
     display: inline-block;
-    font-size: 1.1rem;
-    padding: .4em .8rem;
-    margin-bottom: .4rem;
-    // background-color: var(--color-gray-light-1);
-    // border-radius: .4rem;
-    box-shadow: var(--shadow-tag);
+    padding: .2rem 1rem;
+    border-radius: 3rem;
+    background-color: var(--color-gray-light-1);
+    cursor: pointer;
     transition: all .3s;
 
     &:hover {
-        cursor: pointer;
-        background-color: var(--color-gray-light-3);
+        background-color: var(--color-gray-light-2);
         color: var(--color-gray-dark-1);
     }
 
-    &:not(:last-of-type) { margin-right: .6rem; }
+    &:not(:last-of-type) { margin-right: .4rem; }
 }

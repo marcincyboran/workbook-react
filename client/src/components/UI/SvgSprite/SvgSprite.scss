@@ -5,11 +5,12 @@
 
     &--primary { fill: var(--color-primary); }
     &--secondary { fill: var(--color-secondary); }
+    &--tertiary { fill: var(--color-tertiary); }
     &--blank { fill: var(--color-gray-light-4); }
 
     &--small {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 1.25rem;
+        height: 1.25rem;
     }
 
     &--big {

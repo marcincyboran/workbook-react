@@ -1,7 +1,7 @@
 import React from 'react';
 import './Modal.scss';
 import PropTypes, { InferProps } from 'prop-types';
-import Backdrop from '../Backdrop/Backdrop';
+import Backdrop from '../UI/Backdrop/Backdrop';
 import classes from 'react-style-classes';
 
 const ModalProps = {

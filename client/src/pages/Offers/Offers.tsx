@@ -20,11 +20,6 @@ const OffersPage: React.FC<{}> = () => {
         fetchOffers();
     }, []);
 
-    useEffect(() => {}, [data]);
-
-    console.log('Render');
-    console.log('State - ', data);
-
     return (
         <>
             <Heading tag="h2" type="primary" className="offers__heading">

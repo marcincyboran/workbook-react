@@ -6,7 +6,7 @@ import classes from 'react-style-classes';
 
 const SvgSpriteProps = {
     icon: PropTypes.string.isRequired,
-    color: PropTypes.oneOf(['primary', 'secondary', 'blank']),
+    color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'blank']),
     className: PropTypes.string,
     rotate: PropTypes.oneOf(['90', '180', '270']),
 };

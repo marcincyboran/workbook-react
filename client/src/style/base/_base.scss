@@ -17,8 +17,12 @@ body {
     font-weight: 400;
     line-height: 1.6;
     color: var(--color-gray-dark-2);
-    background-image: linear-gradient(to right bottom, var(--color-gray-light-1), var(--color-gray-light-2));
-    overflow-y: scroll;
+    background-image: linear-gradient(to bottom, var(--color-gray-light-2), var(--color-white));
+    // overflow-y: scroll;
+}
+
+img {
+    max-width: 100%;
 }
 
 input,

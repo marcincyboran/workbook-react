@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Modal from '../../components/UI/Modal/Modal';
+import Modal from '../../components/Modal/Modal';
 import Portal from '../../components/Portal/Portal';
 
 const HomePage: React.FC = () => {

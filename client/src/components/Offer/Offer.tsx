@@ -7,6 +7,7 @@ import Helpers from '../../helpers/shared';
 import SvgSprite from '../UI/SvgSprite/SvgSprite';
 import Tag from '../UI/Typography/Tag/Tag';
 import Heading from '../UI/Typography/Heading/Heading';
+import defaultPlaceholder from '../../assets/imgs/placeholder_default.png';
 
 // TODO Create and import Offert type instead of any
 const OfferProps = {
@@ -20,10 +21,9 @@ const Offer: React.FC<OfferPropsType> = ({ offerData }) => {
     return (
         <article className={classes('offer', offerData.premium && 'offer--premium')}>
             <div className="offer__top">
-                <p className="offer__date">{Helpers.formatDate(offerData.date)}</p>
                 <figure className="offer__image-box">
                     <img
-                        src="http://buildercorp.pl/wp-content/uploads/2017/05/BX.jpg"
+                        src={offerData.logo ? offerData.logo : defaultPlaceholder}
                         alt="Budimex"
                         className="offer__image"
                     />
@@ -34,6 +34,7 @@ const Offer: React.FC<OfferPropsType> = ({ offerData }) => {
                             {offerData.title}
                         </Link>
                     </Heading>
+                    <p className="offer__date">{Helpers.formatDate(offerData.date)}</p>
                     <a
                         href={`https://www.google.com/maps?q=${offerData.location}`}
                         target="_blank"
