@@ -54,7 +54,7 @@ const RegisterUser: React.FC = () => {
                 history.push('/login');
             } catch (err) {
                 Helpers.clearUser();
-                if (err.response.status === 400) return setError('This e-mail address is already in use');
+                if (err.response.status === 400) return setError(err.response.error);
                 return setError('Something went wrong, try again');
             }
         },

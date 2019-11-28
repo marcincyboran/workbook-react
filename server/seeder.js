@@ -2,6 +2,7 @@ require('dotenv').config({ path: './config/config.env' });
 const fs = require('fs');
 const mongoose = require('mongoose');
 const Account = require('./models/Account');
+const Offer = require('./models/Offer');
 
 // Connect to DB
 const connect = async () => {
@@ -23,12 +24,14 @@ const connect = async () => {
 
 // Read files
 const users = JSON.parse(fs.readFileSync(`${__dirname}/_seederData/accounts.json`, 'utf-8'));
+const offers = JSON.parse(fs.readFileSync(`${__dirname}/_seederData/offers.json`, 'utf-8'));
 
 // Import to DB
 const seed = async () => {
     try {
         await Account.create(users);
-        console.log('Imported to db...');
+        await Offer.create(offers);
+        console.log('Imported...');
         process.exit(1);
     } catch (err) {
         console.log(err);
@@ -39,7 +42,8 @@ const seed = async () => {
 const clear = async () => {
     try {
         await Account.deleteMany();
-        console.log('All camps deleted');
+        await Offer.deleteMany();
+        console.log('Deleted...');
         process.exit(1);
     } catch (err) {
         console.log(err);
