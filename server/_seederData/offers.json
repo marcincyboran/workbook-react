@@ -1,0 +1,111 @@
+[
+    {
+        "_id": "5d7a514b5d2c12c7449be047",
+        "owner": "5d7a514b5d2c12c7449be043",
+        "title": "Zlecę remont pokoju 24m2",
+        "shortText": "Poszukuję osoby do wykonania remontu generalnego pokoju 24m2, gładzie, podwieszany sufit, wylewka, panele, wymiana okien i drzwi.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. ",
+        "address": "Matejki 17, 59-920 Bogatynia",
+        "category": "inside",
+        "photos": [
+            {
+                "src": "https://www.jillianharris.com/wp-content/uploads/2017/08/Jillian-Harris-Things-You-Need-to-Know-Before-a-Home-Renovation-1.jpg",
+                "alt": "Renovation"
+            }
+        ],
+        "butget": 2000,
+        "tags": ["remont", "podłoga", "pilne", "wykończenie", "sufit"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be048",
+        "owner": "5d7a514b5d2c12c7449be043",
+        "title": "Budowa domku letniskowego",
+        "shortText": "Cursus nulla pretium per elit faucibus risus consequat donec suspendisse vestibulum",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Zielińskiego 32/62, 53-534 Wrocław",
+        "category": "outside",
+        "tags": ["dach"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be049",
+        "owner": "5d7a514b5d2c12c7449be043",
+        "title": "Wykop pod ławę fundamentową",
+        "shortText": "Lorem ipsum sed praesent nunc potenti, nostra quisque sem turpis venenatis aliquam, ligula tristique tellus dapibus.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Domańskiego 7, 59-900 Zgorzelec",
+        "category": "inside",
+        "photos": [
+            {
+                "src": "https://live.staticflickr.com/5255/5458046998_2002e301cd_b.jpg",
+                "alt": "Renovation"
+            }
+        ],
+        "butget": 20000,
+        "tags": ["remont", "ściana"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be050",
+        "owner": "5d7a514b5d2c12c7449be044",
+        "title": "Remont klatki schodowej",
+        "shortText": "Lorem ipsum pretium primis eu fames vel lobortis, curabitur elementum augue velit cras facilisis, ad cras quis ut sodales sem.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": " Wiejska 8, 00-902 Warszawa",
+        "category": "inside",
+        "photos": [
+            {
+                "src": "https://baumit.pl/files/uk/references/UK/RamEco_Manor_house_red_door/Cream_house_Red_door_ref_cover.jpg",
+                "alt": "Renovation"
+            }
+        ],
+        "butget": 5000,
+        "tags": ["remont", "podłoga"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be051",
+        "owner": "5d7a514b5d2c12c7449be044",
+        "title": "Wymiana drzwi i okien w domku jednorodzinnym",
+        "shortText": "Lorem ipsum vehicula hac sed donec duis laoreet congue dolor blandit.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Matejki 17, 59-920 Bogatynia",
+        "category": "inside",
+        "tags": ["remont", "podłoga", "pilne", "wykończenie"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be052",
+        "owner": "5d7a514b5d2c12c7449be042",
+        "title": "Szalunek ścian nośnych dom pow. 80m2",
+        "shortText": "Lorem ipsum a ut erat lacinia dictum sodales, orci ullamcorper sodales primis maecenas velit suspendisse arcu, porttitor ac auctor arcu nec vitae.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Zielińskiego 32/62, 53-534 Wrocław",
+        "category": "outside",
+        "butget": 200000,
+        "tags": ["dach"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be053",
+        "owner": "5d7a514b5d2c12c7449be042",
+        "title": "Meble na wymiar, kuchenne, drewniane",
+        "shortText": "Lorem ipsum malesuada tellus cursus luctus ut maecenas mi sollicitudin mattis egestas ut integer ligula pharetra suscipit sociosqu cubilia donec.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Domańskiego 7, 59-900 Zgorzelec",
+        "category": "inside",
+        "photos": [
+            {
+                "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGpfG3TEXoPJyPLA_CtCMPcyyqDsQXUkYDD9BVWK2n0WH5xR5UhQ&s",
+                "alt": "Renovation"
+            }
+        ],
+        "butget": 1500,
+        "tags": ["remont", "ściana"]
+    },
+    {
+        "_id": "5d7a514b5d2c12c7449be054",
+        "owner": "5d7a514b5d2c12c7449be042",
+        "title": "Budowa garażu zgodnie z planem budowy",
+        "shortText": "Lorem ipsum malesuada tellus cursus luctus ut maecenas mi sollicitudin mattis egestas ut integer ligula pharetra suscipit sociosqu cubilia donec ipsum neque hendrerit maecenas quis est.",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
+        "address": "Wiejska 4, 00-902 Warszawa",
+        "category": "inside",
+        "tags": ["remont", "podłoga"]
+    }
+]
