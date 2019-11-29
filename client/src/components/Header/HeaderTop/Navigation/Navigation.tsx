@@ -1,19 +1,20 @@
 import React from 'react';
 import './Navigation.scss';
 import { connect } from 'react-redux';
-import { AppState } from './../../../../redux/store';
+import { AppStateType } from '../../../../redux/store';
+import { allActions } from '../../../../redux/store';
 import NavigationItem from './NavigationItem/NavigationItem';
-import { allActions } from './../../../../redux/store';
 
 class Navigation extends React.Component<any, any> {
     state = {
         links: [
-            { link: '/company', desc: 'Firma' },
             { link: '/companies', desc: 'Firmy' },
+            { link: '/company', desc: 'Firma' },
             { link: '/offers', desc: 'Oferty' },
             { link: '/offer', desc: 'Oferta' },
             { link: '/login', desc: 'Login' },
             { link: '/register', desc: 'Register' },
+            { link: '/account', desc: 'Account' },
         ],
     };
 
@@ -37,7 +38,7 @@ class Navigation extends React.Component<any, any> {
     }
 }
 
-const mapStateToProps = (state: AppState) => ({
+const mapStateToProps = (state: AppStateType) => ({
     title: state.system.title,
 });
 

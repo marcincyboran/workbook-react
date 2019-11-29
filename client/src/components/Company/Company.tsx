@@ -35,11 +35,6 @@ const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
                 </div>
                 <div className="company__right">
                     <div className="company__info">
-                        <Heading tag="h2" type="secondary" className="company__title">
-                            <Link to={`/companies/${companyData.id}`} className="company__link">
-                                {companyData.name}
-                            </Link>
-                        </Heading>
                         <a
                             href={`https://www.google.com/maps?q=${companyData.location}`}
                             target="_blank"
@@ -48,6 +43,11 @@ const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
                             <SvgSprite icon="location-pin" color="primary" />
                             <span>{companyData.location}</span>
                         </a>
+                        <Heading tag="h2" type="secondary" className="company__title">
+                            <Link to={`/companies/${companyData.id}`} className="company__link">
+                                {companyData.name}
+                            </Link>
+                        </Heading>
                         <p className="company__description">{companyData.text}</p>
                     </div>
                     <p className="company__tags">{tags}</p>

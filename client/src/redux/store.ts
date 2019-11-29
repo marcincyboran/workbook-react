@@ -8,9 +8,6 @@ import { searchActions } from './search';
 
 const store = createStore(rootReducer, composeWithDevTools());
 
-// DEVELOPMENT ONLY
-(window as any).store = store;
-
 const allActions = bindActionCreators(
     {
         ...systemActions,
@@ -19,5 +16,5 @@ const allActions = bindActionCreators(
     store.dispatch
 );
 
-export type AppState = ReturnType<typeof rootReducer>;
+export type AppStateType = ReturnType<typeof rootReducer>;
 export { store, allActions };

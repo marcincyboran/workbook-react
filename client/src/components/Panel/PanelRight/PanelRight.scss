@@ -1,0 +1,6 @@
+.panel {
+    &__right {
+        flex: 1;
+        padding: calc(2 * var(--default-padding));
+    }
+}

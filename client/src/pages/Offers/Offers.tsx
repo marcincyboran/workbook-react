@@ -25,8 +25,9 @@ const OffersPage: React.FC<{}> = () => {
             <Heading tag="h2" type="primary" className="offers__heading">
                 Offers List
             </Heading>
+            {console.log(data)}
             {data.length > 0 ? (
-                data.map((offerElement: any) => <Offer key={offerElement.id} offerData={offerElement} />)
+                data.map((offerElement: any) => <Offer key={offerElement._id} offerData={offerElement} />)
             ) : (
                 <Loader />
             )}

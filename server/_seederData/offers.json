@@ -13,7 +13,7 @@
                 "alt": "Renovation"
             }
         ],
-        "butget": 2000,
+        "budget": 2000,
         "tags": ["remont", "podłoga", "pilne", "wykończenie", "sufit"]
     },
     {
@@ -40,7 +40,7 @@
                 "alt": "Renovation"
             }
         ],
-        "butget": 20000,
+        "budget": 20000,
         "tags": ["remont", "ściana"]
     },
     {
@@ -57,7 +57,7 @@
                 "alt": "Renovation"
             }
         ],
-        "butget": 5000,
+        "budget": 5000,
         "tags": ["remont", "podłoga"]
     },
     {
@@ -78,7 +78,7 @@
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam.",
         "address": "Zielińskiego 32/62, 53-534 Wrocław",
         "category": "outside",
-        "butget": 200000,
+        "budget": 200000,
         "tags": ["dach"]
     },
     {
@@ -95,7 +95,7 @@
                 "alt": "Renovation"
             }
         ],
-        "butget": 1500,
+        "budget": 1500,
         "tags": ["remont", "ściana"]
     },
     {

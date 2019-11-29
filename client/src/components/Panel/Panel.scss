@@ -1,0 +1,7 @@
+@import '../../style/shared.scss';
+
+.panel {
+    display: flex;
+    overflow: hidden;
+    @include styleSection;
+}

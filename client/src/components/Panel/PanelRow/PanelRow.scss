@@ -1,0 +1,11 @@
+.panel {
+    &__row {
+        display: flex;
+        padding-top: var(--default-padding);
+        padding-bottom: var(--default-padding);
+
+        &:not(:last-child) {
+            border-bottom: var(--border-light);
+        }
+    }
+}
