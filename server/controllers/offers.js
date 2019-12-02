@@ -8,12 +8,7 @@ const _ = require('lodash/object');
 // @route   GET /api/v1/offers
 // @acces   PUBLIC
 module.exports.getOffers = asyncHandler(async (req, res, next) => {
-    const offers = await Offer.find();
-
-    res.status(200).json({
-        success: true,
-        payload: offers,
-    });
+    res.status(200).json(res.queryChain);
 });
 
 // @desc    Get offer details

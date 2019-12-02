@@ -16,13 +16,18 @@
         justify-content: stretch;
         padding: 0 calc(2 * var(--default-padding));
 
-        & > *:not(:last-child) {
-            margin-right: calc(1.5 *var(--default-vertical-gap));
+        & > * {
+            position: relative;
+            flex: 1;
         }
 
         &--checkbox > * {
             flex: 0 1 100%;
             margin-bottom: 1.5rem;
+        }
+
+        & > *:not(:last-child) {
+            margin-right: var(--default-vertical-gap);
         }
     }
 }

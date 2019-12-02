@@ -9,22 +9,6 @@ import Tag from '../UI/Typography/Tag/Tag';
 import Heading from '../UI/Typography/Heading/Heading';
 import defaultPlaceholder from '../../assets/imgs/placeholder_default.png';
 
-// "_id": "5d7a514b5d2c12c7449be047",
-// "owner": "5d7a514b5d2c12c7449be043",
-// "title": "Zlecę remont pokoju 24m2",
-// "shortText": "Poszukuję osoby do wykonania remontu generalnego pokoju 24m2, gładzie, podwieszany sufit, wylewka, panele, wymiana okien i drzwi.",
-// "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima. Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti dolorem necessitatibus totam modi suscipit mollitia ducimus minus a vel velit, excepturi sunt tempore architecto quasi consequuntur sequi autem beatae cum nostrum adipisci consequatur ipsam et at? Amet reprehenderit perspiciatis itaque consequuntur recusandae excepturi corporis minima veritatis aspernatur explicabo voluptate accusantium quibusdam, praesentium placeat consectetur porro obcaecati, at ullam temporibus nisi! Labore explicabo obcaecati voluptas sequi error reprehenderit deleniti totam. ",
-// "address": "Matejki 17, 59-920 Bogatynia",
-// "category": "inside",
-// "photos": [
-//     {
-//         "src": "https://www.jillianharris.com/wp-content/uploads/2017/08/Jillian-Harris-Things-You-Need-to-Know-Before-a-Home-Renovation-1.jpg",
-//         "alt": "Renovation"
-//     }
-// ],
-// "butget": 2000,
-// "tags": ["remont", "podłoga", "pilne", "wykończenie", "sufit"]
-
 // TODO Create and import Offert type instead of any
 const OfferProps = {
     offerData: PropTypes.objectOf(PropTypes.any).isRequired,
@@ -32,7 +16,6 @@ const OfferProps = {
 type OfferPropsType = InferProps<typeof OfferProps>;
 
 const Offer: React.FC<OfferPropsType> = ({ offerData }) => {
-    console.log(offerData);
     const tags = offerData.tags.map((tag: string) => <Tag key={tag}>{tag}</Tag>);
 
     let imgSrc = defaultPlaceholder;

@@ -40,6 +40,7 @@ class Navigation extends React.Component<any, any> {
 
 const mapStateToProps = (state: AppStateType) => ({
     title: state.system.title,
+    user: state.system.user,
 });
 
 export default connect(mapStateToProps)(Navigation);

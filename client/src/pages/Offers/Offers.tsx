@@ -9,6 +9,7 @@ const OffersPage: React.FC<{}> = () => {
     const [data, setData] = useState([]);
     const fetchOffers = async () => {
         try {
+            // Query example with mongo operator ?tags[in]=ściana,pilne
             const res = await http('/offers');
             if (res.data.payload) setData(res.data.payload);
         } catch (err) {
@@ -25,7 +26,6 @@ const OffersPage: React.FC<{}> = () => {
             <Heading tag="h2" type="primary" className="offers__heading">
                 Offers List
             </Heading>
-            {console.log(data)}
             {data.length > 0 ? (
                 data.map((offerElement: any) => <Offer key={offerElement._id} offerData={offerElement} />)
             ) : (

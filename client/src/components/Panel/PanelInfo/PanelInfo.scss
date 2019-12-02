@@ -1,0 +1,26 @@
+.panel {
+    &__info {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0;
+        transition: opacity .4s;
+        display: inline-block;
+
+        &.error {
+            color: var(--color-primary);
+        }
+        
+        &.info {
+            color: var(--color-secondary);
+        }
+
+        &.error,
+        &.info {
+            opacity: 1;
+        }
+    }
+}

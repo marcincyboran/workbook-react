@@ -2,6 +2,7 @@ import { AxiosResponse } from 'axios';
 import { allActions } from '../redux/store';
 import { systemTypes } from '../redux/system/index';
 import CONSTANTS from '../helpers/constants';
+import http from './axios';
 
 export default class Helpers {
     static genModsFromProp = (base: string, mods: string): string => {
@@ -12,8 +13,25 @@ export default class Helpers {
             .join(' ');
     };
 
+    static getUser = async () => {
+        if (
+            localStorage.getItem(CONSTANTS.WB_AUTH_TOKEN) &&
+            localStorage.getItem(CONSTANTS.WB_AUTH_TOKEN) !== 'undefined'
+        ) {
+            try {
+                const res = await http.get('auth/me');
+                console.log(res);
+                Helpers.userFromResponse(res);
+            } catch (err) {
+                console.log(err);
+                // Helpers.clearUser();
+            }
+        }
+    };
+
     static userFromResponse = (res: AxiosResponse): void => {
         const { success, payload } = res.data;
+        console.log(payload);
         if (success) localStorage.setItem(CONSTANTS.WB_AUTH_TOKEN, payload.token);
         const user: systemTypes.User = {
             token: payload.token,

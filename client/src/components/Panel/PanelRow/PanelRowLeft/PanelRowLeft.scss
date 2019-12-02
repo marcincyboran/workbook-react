@@ -1,5 +1,6 @@
 .panel {
     &__row-left {
         flex: 0 0 25rem;
+        padding-right:  var(--default-padding);
     }
 }

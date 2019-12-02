@@ -9,15 +9,17 @@ const NavLinkProps = {
     to: PropTypes.string.isRequired,
     icon: PropTypes.string,
     disabled: PropTypes.bool,
+    exact: PropTypes.bool,
 };
 type NavLinkPropsType = InferProps<typeof NavLinkProps>;
 
-const PanelNavLink: React.FC<NavLinkPropsType> = ({ children, disabled, to, icon }) => {
+const PanelNavLink: React.FC<NavLinkPropsType> = ({ children, disabled, to, icon, exact }) => {
     const linkClasses = classes('panel__nav-item', disabled && 'disabled');
+    console.log(to);
 
     return (
         <li className={linkClasses}>
-            <NavLink className="panel__nav-link" to={to} activeClassName="active" exact>
+            <NavLink className="panel__nav-link" to={to} activeClassName="active" exact={exact ? exact : false}>
                 <span>{children}</span>
                 {icon && <SvgSprite icon={icon} className="" />}
             </NavLink>

@@ -2,7 +2,7 @@ import React from 'react';
 import './PanelTitle.scss';
 import Heading from '../../UI/Typography/Heading/Heading';
 
-const Panel: React.FC<{}> = ({ children }) => {
+const PanelTitle: React.FC<{}> = ({ children }) => {
     return (
         <Heading tag="h2" type="primary" mod="primary, bold" className="panel__title">
             {children}
@@ -10,4 +10,4 @@ const Panel: React.FC<{}> = ({ children }) => {
     );
 };
 
-export default Panel;
+export default PanelTitle;

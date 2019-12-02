@@ -5,9 +5,12 @@ export const CLEAR_USER = 'CLEAR_USER';
 export type Title = string;
 
 export interface User {
+    _id: string;
     token: string;
     firstName: string;
+    lastName: string;
     email: string;
+    address: string;
     role: string;
     premium: string;
 }

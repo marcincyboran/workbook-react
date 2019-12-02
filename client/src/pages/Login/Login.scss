@@ -41,6 +41,9 @@
     .form__valid-icon {
         display: none;
     }
+
+    &__form .form__group { margin-top: var(--default-horizontal-gap);}
+
     &__center {
         flex: 1;
         padding:

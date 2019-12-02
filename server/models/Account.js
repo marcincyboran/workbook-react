@@ -32,14 +32,16 @@ const accountSchema = new mongoose.Schema({
         minlength: 8,
         select: false,
     },
+    phone: String,
     address: {
         type: String,
         required: [true, 'Please add an address'],
     },
-    created: {
+    createdAt: {
         type: Date,
         default: Date.now,
     },
+    lastModified: Date,
     location: {
         // GeoJSON Point
         type: {
@@ -57,6 +59,8 @@ const accountSchema = new mongoose.Schema({
         zipcode: String,
         country: String,
     },
+    facebook: String,
+    linkedin: String,
     phone: String,
     resetToken: String,
     resetTokenExpire: String,
@@ -70,6 +74,7 @@ const accountSchema = new mongoose.Schema({
 accountSchema.pre('save', async function(next) {
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
+    this.lastModified = Date.now();
     next();
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppWrapper from './AppWrapper';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from './Home/Home';
@@ -11,8 +11,18 @@ import OfferDetailsPage from './OfferDetails/OfferDetails';
 import LoginPage from './Login/Login';
 import RegisterPage from './Register/Register';
 import NoMatchPage from './NoMatch/NoMatch';
+import Helpers from '../helpers/shared';
 
 const Root: React.FC = () => {
+    const fetchUser = async () => {
+        await Helpers.getUser();
+    };
+
+    useEffect(() => {
+        console.log('Root init');
+        fetchUser();
+    }, []);
+
     return (
         <Switch>
             <Route path="/">

@@ -27,11 +27,6 @@
         }
     }
 
-    &__block {
-        position: relative;
-        flex: 1;
-    }
-
     &__valid-icon {
         visibility: none;
         opacity: 0;
@@ -59,7 +54,12 @@
         border: var(--border-lighter);
         box-shadow: var(--shadow-form);
         transition: border-color .4s ease-in-out;
-        
+
+        &--textarea {
+            min-height: 12rem;
+            resize: vertical;
+        }
+
         &:focus {
             border-color: var(--color-secondary) !important;
             box-shadow: var(--shadow-small-middle);

@@ -1,5 +1,13 @@
 .panel {
     &__row-right {
         flex: 1;
+        padding-left:  var(--default-padding);
+        border-left: var(--border-lighter);
+
+        .form__group {
+            padding: 0;
+        }
     }
+
+
 }

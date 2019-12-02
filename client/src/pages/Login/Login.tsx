@@ -32,9 +32,11 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
             email: Yup.string()
                 .email('Please use a valid e-mail address')
                 .min(5, 'Must be min 5 characters long')
+                .max(30, 'Must be max 30 characters long')
                 .required('This field is required'),
             password: Yup.string()
                 .min(8, 'Must be min 8 characters long.')
+                .max(30, 'Must be max 30 characters long')
                 .required('This field is required'),
         }),
         onSubmit: async values => {
@@ -69,7 +71,7 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
             <div className="login__center">
                 <Logo link="#" type="white" />
                 <Form className="login__form" handleSubmit={formik.handleSubmit} useCustomError>
-                    <FormGroup>
+                    <FormGroup type="full">
                         <FieldText
                             label=""
                             type="email"
@@ -79,7 +81,7 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
                             placeholder="Email"
                         />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup type="full">
                         <FieldText
                             label=""
                             type="password"
