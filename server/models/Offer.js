@@ -43,11 +43,6 @@ const offerSchema = new mongoose.Schema({
         zipcode: String,
         country: String,
     },
-    category: {
-        type: String,
-        enum: ['inside', 'outside'],
-        required: [true, 'Please select a category'],
-    },
     tags: {
         type: [String],
         lowercase: true,

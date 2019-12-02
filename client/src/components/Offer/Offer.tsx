@@ -16,7 +16,7 @@ const OfferProps = {
 type OfferPropsType = InferProps<typeof OfferProps>;
 
 const Offer: React.FC<OfferPropsType> = ({ offerData }) => {
-    const tags = offerData.tags.map((tag: string) => <Tag key={tag}>{tag}</Tag>);
+    const tags = offerData.tags.map((tag: string, i: number) => <Tag key={tag + i}>{tag}</Tag>);
 
     let imgSrc = defaultPlaceholder;
     let imgAlt = 'Offer image pleaceholder';

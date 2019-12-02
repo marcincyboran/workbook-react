@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Account.scss';
 import { connect } from 'react-redux';
 import { AppStateType } from '../../redux/store';
@@ -46,8 +46,8 @@ const AccountPage: React.FC<accountPropsType> = ({ user }) => {
             <PanelRight>
                 <Switch>
                     <Route path="/account" exact render={() => <AccountProfile user={user} />} />
-                    <Route path="/account/offers" exact component={AccountOffers} />
-                    <Route path="/account/offers/new" component={AccountNewOffer} />
+                    <Route path="/account/offers" exact render={() => <AccountOffers userID={user && user._id} />} />
+                    <Route path="/account/offers/create" render={() => <AccountNewOffer user={user} />} />
                     <Route path="/account/company" component={AccountCompany} />
                     <Route path="/account/messages" component={AccountMessages} />
                     <Redirect to="/account" />
@@ -59,6 +59,7 @@ const AccountPage: React.FC<accountPropsType> = ({ user }) => {
 
 const mapeStateToProps = (state: AppStateType) => ({
     user: state.system.user || {
+        _id: '',
         firstName: 'John',
         lastName: 'Doe',
         address: 'Dunno, Warsaw 00-000',

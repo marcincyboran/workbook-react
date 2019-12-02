@@ -18,8 +18,27 @@ module.exports.getOffer = asyncHandler(async (req, res, next) => {});
 
 // @desc    Create offer
 // @route   POST /api/v1/offers
-// @acces   ADMIN / USERS / COMPANIES
-module.exports.createOffer = asyncHandler(async (req, res, next) => {});
+// @acces   ADMIN / USERS
+module.exports.createOffer = asyncHandler(async (req, res, next) => {
+    if (req.account.role !== 'admin') {
+        const offersCounter = await Offer.find({ owner: req.account._id }).countDocuments();
+        if (!req.account.premium && offersCounter >= 3)
+            return next(new ErrorResponse('Reached maxiumum number of offerts for free users', 402));
+    }
+
+    const offer = await Offer.create({
+        ...req.body,
+        premium: req.account.premium,
+        owner: req.account._id,
+    });
+
+    console.log(offer);
+
+    res.status(201).json({
+        success: true,
+        payload: offer,
+    });
+});
 
 // @desc    Update offer details
 // @route   PUT /api/v1/offers/:id

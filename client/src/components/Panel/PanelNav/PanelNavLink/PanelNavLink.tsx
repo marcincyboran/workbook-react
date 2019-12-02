@@ -15,7 +15,6 @@ type NavLinkPropsType = InferProps<typeof NavLinkProps>;
 
 const PanelNavLink: React.FC<NavLinkPropsType> = ({ children, disabled, to, icon, exact }) => {
     const linkClasses = classes('panel__nav-item', disabled && 'disabled');
-    console.log(to);
 
     return (
         <li className={linkClasses}>

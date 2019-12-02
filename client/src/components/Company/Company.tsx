@@ -18,7 +18,7 @@ const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
     const tags = companyData.tags.map((tag: string) => <Tag key={tag}>{tag}</Tag>);
 
     return (
-        <article className="company" data-id="${company.id}">
+        <article className="company">
             <div className="company__top">
                 <div className="company__left">
                     <figure>
@@ -38,13 +38,14 @@ const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
                         <a
                             href={`https://www.google.com/maps?q=${companyData.location}`}
                             target="_blank"
+                            rel="noopener noreferrer"
                             className="company__location"
                         >
                             <SvgSprite icon="location-pin" color="primary" />
                             <span>{companyData.location}</span>
                         </a>
                         <Heading tag="h2" type="secondary" className="company__title">
-                            <Link to={`/companies/${companyData.id}`} className="company__link">
+                            <Link to={`/companies/${companyData._id}`} className="company__link">
                                 {companyData.name}
                             </Link>
                         </Heading>

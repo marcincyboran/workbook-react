@@ -5,8 +5,9 @@ import Offer from '../../components/Offer/Offer';
 import Heading from '../../components/UI/Typography/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
 
+// TODO create and use Offer type / interface
 const OffersPage: React.FC<{}> = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<Array<object>>([]);
     const fetchOffers = async () => {
         try {
             // Query example with mongo operator ?tags[in]=ściana,pilne

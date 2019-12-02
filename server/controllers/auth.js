@@ -81,6 +81,7 @@ const sendResponse = (account, res, status) => {
         payload: {
             token,
             account: _.pick(account, [
+                '_id',
                 'firstName',
                 'lastName',
                 'email',

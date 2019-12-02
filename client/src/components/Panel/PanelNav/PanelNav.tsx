@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './PanelNav.scss';
 
 const PanelNavLink: React.FC<{}> = ({ children }) => {

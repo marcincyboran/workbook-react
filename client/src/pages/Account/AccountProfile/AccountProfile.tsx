@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import PropsTypes, { InferProps } from 'prop-types';
+import PropTypes, { InferProps } from 'prop-types';
 import { useFormik } from 'formik';
 import { Info } from '../../../helpers/types';
 import http from '../../../helpers/axios';
@@ -19,7 +19,7 @@ import Form from '../../../components/Form/Form';
 import FormSubmit from '../../../components/Form/FormSubmit/FormSubmit';
 
 const accountProfileProps = {
-    user: PropsTypes.objectOf(PropsTypes.any),
+    user: PropTypes.objectOf(PropTypes.any),
 };
 type accountProfilePropsType = InferProps<typeof accountProfileProps>;
 
@@ -66,8 +66,8 @@ const AccountProfile: React.FC<accountProfilePropsType> = ({ user }) => {
                 Helpers.userFromResponse(res);
                 setInfo({ type: 'info', msg: 'Saved' });
             } catch (err) {
-                formikHelpers.setSubmitting(false);
-                setInfo({ type: 'error', msg: err.response.data.error || err.statusYexy });
+                formikHelpers.setSubmitting(true);
+                setInfo({ type: 'error', msg: err.response.data.error || err.response.statusText });
             }
         },
     });

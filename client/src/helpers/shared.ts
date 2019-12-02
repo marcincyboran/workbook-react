@@ -20,18 +20,15 @@ export default class Helpers {
         ) {
             try {
                 const res = await http.get('auth/me');
-                console.log(res);
                 Helpers.userFromResponse(res);
             } catch (err) {
-                console.log(err);
-                // Helpers.clearUser();
+                Helpers.clearUser();
             }
         }
     };
 
     static userFromResponse = (res: AxiosResponse): void => {
         const { success, payload } = res.data;
-        console.log(payload);
         if (success) localStorage.setItem(CONSTANTS.WB_AUTH_TOKEN, payload.token);
         const user: systemTypes.User = {
             token: payload.token,
