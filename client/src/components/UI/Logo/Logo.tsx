@@ -1,17 +1,15 @@
 import React from 'react';
 import './Logo.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import { Link } from 'react-router-dom';
 // import classes from 'react-style-classes';
 
-const LogoProps = {
-    link: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['white', 'color']).isRequired,
-    large: PropTypes.bool,
+type LogoProps = {
+    link: string;
+    type: 'white' | 'color';
+    large?: boolean;
 };
-type LogoPropsTypes = InferProps<typeof LogoProps>;
 
-const Logo: React.FC<LogoPropsTypes> = ({ link, type, large }) => {
+const Logo: React.FC<LogoProps> = ({ link, type, large }) => {
     const linkClasses: String[] = ['logo'];
     const dotClasses: String[] = ['logo__dot'];
 

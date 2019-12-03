@@ -3,6 +3,7 @@ import { allActions } from '../redux/store';
 import { systemTypes } from '../redux/system/index';
 import CONSTANTS from '../helpers/constants';
 import http from './axios';
+import { CreatedAt } from './types';
 
 export default class Helpers {
     static genModsFromProp = (base: string, mods: string): string => {
@@ -20,6 +21,7 @@ export default class Helpers {
         ) {
             try {
                 const res = await http.get('auth/me');
+                console.log(res);
                 Helpers.userFromResponse(res);
             } catch (err) {
                 Helpers.clearUser();
@@ -42,7 +44,7 @@ export default class Helpers {
         allActions.clearUser();
     };
 
-    static formatDate = (rawDate: string): string => {
+    static formatDate = (rawDate: CreatedAt): string => {
         const date = new Date(rawDate);
         const today = new Date();
         if (today.getTime() - date.getTime() <= 86400000) {

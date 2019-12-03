@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import http from '../../../helpers/axios';
-import { Info } from '../../../helpers/types';
+import { InfoType } from '../../../helpers/types';
 import { useFormik } from 'formik';
 import PropTypes, { InferProps } from 'prop-types';
 
@@ -23,7 +23,7 @@ const accountProfileProps = {
 type AccountProfilePropsType = InferProps<typeof accountProfileProps>;
 
 const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
-    const [info, setInfo] = useState<Info>({
+    const [info, setInfo] = useState<InfoType>({
         type: '',
         msg: '',
     });
@@ -58,9 +58,8 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
         }),
         onSubmit: async (values, formikHelpers) => {
             setInfo({ type: '', msg: '' });
-
             try {
-                // formikHelpers.resetForm();
+                formikHelpers.resetForm();
                 const res = await http.post('offers', {
                     ...values,
                     budget: parseInt(values.budget),

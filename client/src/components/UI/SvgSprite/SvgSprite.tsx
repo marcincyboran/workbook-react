@@ -1,18 +1,16 @@
 import React from 'react';
 import './SvgSprite.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import sprite from './../../../assets/svgs/sprite.svg';
 import classes from 'react-style-classes';
 
-const SvgSpriteProps = {
-    icon: PropTypes.string.isRequired,
-    color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'blank']),
-    className: PropTypes.string,
-    rotate: PropTypes.oneOf(['90', '180', '270']),
+type SvgSpriteProps = {
+    icon: string;
+    color?: 'primary' | 'secondary' | 'tertiary' | 'blank';
+    className?: string;
+    rotate?: '90' | '180' | '270';
 };
-type SvgSpritePropsTypes = InferProps<typeof SvgSpriteProps>;
 
-const SvgSprite: React.FC<SvgSpritePropsTypes> = ({ icon, className, color, rotate }) => {
+const SvgSprite: React.FC<SvgSpriteProps> = ({ icon, className, color, rotate }) => {
     const iconClasses = className
         ? className
         : classes('icon', color && `icon--${color}`, rotate && `icon--rotate${rotate}`);

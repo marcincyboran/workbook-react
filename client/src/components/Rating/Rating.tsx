@@ -1,16 +1,14 @@
 import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
 import SvgSprite from '../UI/SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
 
-const RatingProps = {
-    likes: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    stars: PropTypes.number,
+type RatingProps = {
+    likes: number;
+    votes: number;
+    stars?: number;
 };
-type RatingPropType = InferProps<typeof RatingProps>;
 
-const Rating: React.FC<RatingPropType> = ({ likes, votes, stars }) => {
+const Rating: React.FC<RatingProps> = ({ likes, votes, stars = 5 }) => {
     const fullStars = Math.round((likes / votes) * stars!);
 
     let rating = Array(stars)
@@ -26,10 +24,6 @@ const Rating: React.FC<RatingPropType> = ({ likes, votes, stars }) => {
         });
 
     return <div>{rating}</div>;
-};
-
-Rating.defaultProps = {
-    stars: 5,
 };
 
 export default Rating;

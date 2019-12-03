@@ -32,7 +32,6 @@ const accountSchema = new mongoose.Schema({
         minlength: 8,
         select: false,
     },
-    phone: String,
     address: {
         type: String,
         required: [true, 'Please add an address'],

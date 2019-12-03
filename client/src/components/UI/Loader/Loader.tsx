@@ -2,7 +2,7 @@ import React from 'react';
 import './Loader.scss';
 import Heading from '../Typography/Heading/Heading';
 
-const Loader: React.FC<{}> = () => {
+const Loader: React.FC = () => {
     return (
         <div className="loader">
             <Heading tag="p" type="secondary" className="loader__heading">

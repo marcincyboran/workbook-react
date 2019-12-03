@@ -5,7 +5,7 @@ import { ParallaxBanner } from 'react-scroll-parallax';
 import headerImg from './../../../assets/imgs/header.jpg';
 import Container from './../../UI/Container/Container';
 
-const HeaderBottom: React.FC<{}> = () => {
+const HeaderBottom: React.FC = () => {
     return (
         <section className="header-bottom">
             <ParallaxBanner

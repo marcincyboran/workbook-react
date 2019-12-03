@@ -8,6 +8,7 @@ import { allActions } from '../../redux/store';
 const RegisterPage: React.FC = () => {
     const [activeForm, setaAtiveForm] = useState('user');
     const onFormSwitch = (form: string) => setaAtiveForm(form);
+
     useEffect(() => {
         allActions.setDocumentTitle('Register');
     }, []);

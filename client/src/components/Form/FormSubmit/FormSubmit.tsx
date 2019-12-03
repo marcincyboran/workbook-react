@@ -1,18 +1,16 @@
 import React from 'react';
 import './FormSubmit.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import SvgSprite from './../../UI/SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
 import Helpers from './../../../helpers/shared';
 
-const props = {
-    color: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'white']).isRequired,
-    custom: PropTypes.oneOf(['icon', 'big']),
-    icon: PropTypes.bool,
+type FormSubmitProps = {
+    color: 'primary' | 'secondary' | 'tertiary' | 'white';
+    custom?: 'icon' | 'big';
+    icon?: boolean;
 };
-type propsType = InferProps<typeof props>;
 
-const FormSubmit: React.FC<propsType> = ({ children, color, custom, icon }) => {
+const FormSubmit: React.FC<FormSubmitProps> = ({ children, color, custom, icon }) => {
     const buttonClasses = classes(
         'button',
         color && `button--${color}`,

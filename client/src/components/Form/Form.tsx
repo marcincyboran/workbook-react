@@ -1,17 +1,15 @@
 import React from 'react';
 import './Form.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import classes from 'react-style-classes';
 
-const FormProps = {
-    className: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string,
-    useCustomError: PropTypes.bool,
+type FormProps = {
+    handleSubmit: () => void;
+    className?: string;
+    errorMessage?: string;
+    useCustomError?: boolean;
 };
-type FormPropsTypes = InferProps<typeof FormProps>;
 
-const Form: React.FC<FormPropsTypes> = ({ children, className, handleSubmit, errorMessage, useCustomError }) => {
+const Form: React.FC<FormProps> = ({ children, className, handleSubmit, errorMessage, useCustomError }) => {
     const formClasses = classes('form', className);
 
     return (

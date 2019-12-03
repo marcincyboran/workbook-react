@@ -2,6 +2,7 @@ import React from 'react';
 import './Account.scss';
 import { connect } from 'react-redux';
 import { AppStateType } from '../../redux/store';
+import { User } from '../../redux/system/duck/types';
 import { Switch, Route, Redirect, useRouteMatch } from 'react-router';
 import Panel from '../../components/Panel/Panel';
 import PanelLeft from '../../components/Panel/PanelLeft/PanelLeft';
@@ -14,20 +15,15 @@ import AccountOffers from './AccountOffers/AccountOffers';
 import AccountNewOffer from './AccountNewOffer/AccountNewOffer';
 import AccountCompany from './AccountCompany/AccountCompany';
 import AccountMessages from './AccountMessages/AccountMessages';
-import PropTypes, { InferProps } from 'prop-types';
 
-const accountProps = {
-    user: PropTypes.objectOf(PropTypes.any),
-};
-type accountPropsType = InferProps<typeof accountProps>;
+type AccountProps = { user: User };
 
-const AccountPage: React.FC<accountPropsType> = ({ user }) => {
+const AccountPage: React.FC<AccountProps> = ({ user }) => {
     const match = useRouteMatch();
-
     return (
         <Panel>
             <PanelLeft>
-                <PanelUser firstName={user!.firstName} lastName={user!.lastName} />
+                <PanelUser firstName={user.firstName} lastName={user.lastName} />
                 <PanelNav>
                     <PanelNavLink to={`${match.url}`} icon="cog" exact>
                         Profil
@@ -46,7 +42,7 @@ const AccountPage: React.FC<accountPropsType> = ({ user }) => {
             <PanelRight>
                 <Switch>
                     <Route path="/account" exact render={() => <AccountProfile user={user} />} />
-                    <Route path="/account/offers" exact render={() => <AccountOffers userID={user && user._id} />} />
+                    <Route path="/account/offers" exact render={() => <AccountOffers userID={user._id} />} />
                     <Route path="/account/offers/create" render={() => <AccountNewOffer user={user} />} />
                     <Route path="/account/company" component={AccountCompany} />
                     <Route path="/account/messages" component={AccountMessages} />
@@ -58,16 +54,7 @@ const AccountPage: React.FC<accountPropsType> = ({ user }) => {
 };
 
 const mapeStateToProps = (state: AppStateType) => ({
-    user: state.system.user || {
-        _id: '',
-        firstName: 'John',
-        lastName: 'Doe',
-        address: 'Dunno, Warsaw 00-000',
-        phone: '123 333 321',
-        email: 'john.doe@gmail.com',
-        facebook: 'https://www.facebook.com/',
-        linkedin: 'https://www.linkedin.com/',
-    },
+    user: state.system.user,
 });
 
 export default connect(mapeStateToProps)(AccountPage);

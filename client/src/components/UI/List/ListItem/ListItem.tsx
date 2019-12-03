@@ -1,14 +1,12 @@
 import React from 'react';
-import PropTypes, { InferProps } from 'prop-types';
 import SvgSprite from './../../SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
 
-const ListItemProps = {
-    type: PropTypes.string,
+type ListItemProps = {
+    type?: string;
 };
-type ListItemPropsTypes = InferProps<typeof ListItemProps>;
 
-const ListItem: React.FC<ListItemPropsTypes> = ({ children, type }) => {
+const ListItem: React.FC<ListItemProps> = ({ children, type }) => {
     const itemClasses = classes('u-list__item', type && `u-list__item--${type}`);
 
     return (

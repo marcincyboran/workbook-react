@@ -1,22 +1,20 @@
 import React from 'react';
 import './FieldText.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import classes from 'react-style-classes';
 import SvgSprite from './../../UI/SvgSprite/SvgSprite';
 
-const FieldTextProps = {
-    label: PropTypes.string.isRequired,
-    type: PropTypes.oneOf(['text', 'password', 'email']).isRequired,
-    getFieldProps: PropTypes.objectOf(PropTypes.any).isRequired,
-    errors: PropTypes.string.isRequired,
-    touched: PropTypes.bool.isRequired,
-    placeholder: PropTypes.string,
-    required: PropTypes.bool,
-    textarea: PropTypes.bool,
+type FieldTextProps = {
+    getFieldProps: { [key: string]: any };
+    label: string;
+    type: 'text' | 'password' | 'email' | 'textarea' | 'number';
+    errors: string;
+    touched: boolean;
+    placeholder?: string;
+    required?: boolean;
+    textarea?: boolean;
 };
-type FieldTextPropsTypes = InferProps<typeof FieldTextProps>;
 
-const FieldText: React.FC<FieldTextPropsTypes> = ({
+const FieldText: React.FC<FieldTextProps> = ({
     type,
     label,
     getFieldProps,

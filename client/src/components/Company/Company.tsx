@@ -1,21 +1,19 @@
 import React from 'react';
 import './Company.scss';
 import { Link } from 'react-router-dom';
-import PropTypes, { InferProps } from 'prop-types';
 import Tag from '../UI/Typography/Tag/Tag';
 import Heading from '../UI/Typography/Heading/Heading';
 import Rating from '../Rating/Rating';
 import CompanyPlaceholder from '../../assets/imgs/placeholder_company.png';
 import SvgSprite from '../UI/SvgSprite/SvgSprite';
+import { CompanyType } from '../../helpers/types';
 
-// TODO Create and import Offert type instead of any
-const CompanyProps = {
-    companyData: PropTypes.objectOf(PropTypes.any).isRequired,
+type CompanyProps = {
+    companyData: CompanyType;
 };
-type CompanyPropsType = InferProps<typeof CompanyProps>;
 
-const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
-    const tags = companyData.tags.map((tag: string) => <Tag key={tag}>{tag}</Tag>);
+const Company: React.FC<CompanyProps> = ({ companyData }) => {
+    const tags = companyData.tags.map((tag, i) => <Tag key={tag + i}>{tag}</Tag>);
 
     return (
         <article className="company">
@@ -36,13 +34,13 @@ const Company: React.FC<CompanyPropsType> = ({ companyData }) => {
                 <div className="company__right">
                     <div className="company__info">
                         <a
-                            href={`https://www.google.com/maps?q=${companyData.location}`}
+                            href={`https://www.google.com/maps?q=${companyData.address}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="company__location"
                         >
                             <SvgSprite icon="location-pin" color="primary" />
-                            <span>{companyData.location}</span>
+                            <span>{companyData.address}</span>
                         </a>
                         <Heading tag="h2" type="secondary" className="company__title">
                             <Link to={`/companies/${companyData._id}`} className="company__link">

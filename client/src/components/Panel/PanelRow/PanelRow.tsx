@@ -1,7 +1,7 @@
 import React from 'react';
 import './PanelRow.scss';
 
-const PanelRow: React.FC<{}> = ({ children }) => {
+const PanelRow: React.FC = ({ children }) => {
     return <div className="panel__row">{children}</div>;
 };
 

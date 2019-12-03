@@ -1,6 +1,5 @@
 import React from 'react';
 import './Offer.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import { Link } from 'react-router-dom';
 import classes from 'react-style-classes';
 import Helpers from '../../helpers/shared';
@@ -8,15 +7,14 @@ import SvgSprite from '../UI/SvgSprite/SvgSprite';
 import Tag from '../UI/Typography/Tag/Tag';
 import Heading from '../UI/Typography/Heading/Heading';
 import defaultPlaceholder from '../../assets/imgs/placeholder_default.png';
+import { OfferType } from '../../helpers/types';
 
-// TODO Create and import Offert type instead of any
-const OfferProps = {
-    offerData: PropTypes.objectOf(PropTypes.any).isRequired,
+type OfferProps = {
+    offerData: OfferType;
 };
-type OfferPropsType = InferProps<typeof OfferProps>;
 
-const Offer: React.FC<OfferPropsType> = ({ offerData }) => {
-    const tags = offerData.tags.map((tag: string, i: number) => <Tag key={tag + i}>{tag}</Tag>);
+const Offer: React.FC<OfferProps> = ({ offerData }) => {
+    const tags = offerData.tags.map((tag, i) => <Tag key={tag + i}>{tag}</Tag>);
 
     let imgSrc = defaultPlaceholder;
     let imgAlt = 'Offer image pleaceholder';

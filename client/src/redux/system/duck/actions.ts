@@ -1,4 +1,5 @@
 import * as types from './types';
+import CONSTANTS from '../../../helpers/constants';
 
 export const setDocumentTitle = (title: types.Title): types.SystemActionsTypes => ({
     type: types.SET_DOCUMENT_TITLE,
@@ -12,4 +13,5 @@ export const setUser = (user: types.User): types.SystemActionsTypes => ({
 
 export const clearUser = (): types.SystemActionsTypes => ({
     type: types.CLEAR_USER,
+    payload: CONSTANTS.DEFAULT_USER,
 });

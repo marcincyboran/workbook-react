@@ -1,16 +1,14 @@
 import React from 'react';
 import './Modal.scss';
-import PropTypes, { InferProps } from 'prop-types';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import classes from 'react-style-classes';
 
-const ModalProps = {
-    show: PropTypes.bool.isRequired,
-    onCloseHandler: PropTypes.func.isRequired,
+type ModalProps = {
+    show: boolean;
+    onCloseHandler: () => void;
 };
-type ModalPropsType = InferProps<typeof ModalProps>;
 
-const Modal: React.FC<ModalPropsType> = ({ children, show, onCloseHandler }) => {
+const Modal: React.FC<ModalProps> = ({ children, show, onCloseHandler }) => {
     return (
         <>
             {show && <Backdrop onClose={onCloseHandler} />}
@@ -23,5 +21,6 @@ const Modal: React.FC<ModalPropsType> = ({ children, show, onCloseHandler }) => 
         </>
     );
 };
+
 // TODO make animation void => block
 export default Modal;

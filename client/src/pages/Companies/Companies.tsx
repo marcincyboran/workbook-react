@@ -4,9 +4,10 @@ import http from '../../helpers/axios';
 import Company from '../../components/Company/Company';
 import Heading from '../../components/UI/Typography/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
+import { CompanyType } from '../../helpers/types';
 
 const CompaniesPage: React.FC = () => {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<CompanyType[]>([]);
     const fetchOffers = async () => {
         try {
             const res = await http('/companies');
@@ -26,7 +27,7 @@ const CompaniesPage: React.FC = () => {
                 Companies List
             </Heading>
             {data.length > 0 ? (
-                data.map((companyElement: any) => <Company key={companyElement.id} companyData={companyElement} />)
+                data.map(companyElement => <Company key={companyElement._id} companyData={companyElement} />)
             ) : (
                 <Loader />
             )}

@@ -4,10 +4,10 @@ import http from '../../helpers/axios';
 import Offer from '../../components/Offer/Offer';
 import Heading from '../../components/UI/Typography/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
+import { OfferType } from '../../helpers/types';
 
-// TODO create and use Offer type / interface
-const OffersPage: React.FC<{}> = () => {
-    const [data, setData] = useState<Array<object>>([]);
+const OffersPage: React.FC = () => {
+    const [data, setData] = useState<OfferType[]>([]);
     const fetchOffers = async () => {
         try {
             // Query example with mongo operator ?tags[in]=ściana,pilne
@@ -28,7 +28,7 @@ const OffersPage: React.FC<{}> = () => {
                 Offers List
             </Heading>
             {data.length > 0 ? (
-                data.map((offerElement: any) => <Offer key={offerElement._id} offerData={offerElement} />)
+                data.map(offerElement => <Offer key={offerElement._id} offerData={offerElement} />)
             ) : (
                 <Loader />
             )}

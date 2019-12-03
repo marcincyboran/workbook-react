@@ -2,7 +2,25 @@ import * as types from './types';
 
 const initialStore: types.SystemState = {
     title: 'WorkBook',
-    user: null,
+    user: {
+        _id: '',
+        token: '',
+        firstName: 'John',
+        lastName: 'Doe',
+        address: 'None',
+        email: 'john.doe@gmail.com',
+        role: 'user',
+        location: {
+            city: '',
+            coordinates: [0, 0],
+            country: '',
+            formattedAddress: '',
+            state: '',
+            street: '',
+            type: '',
+            zipcode: '',
+        },
+    },
 };
 
 const reducer = (state = initialStore, action: types.SystemActionsTypes) => {
@@ -14,15 +32,10 @@ const reducer = (state = initialStore, action: types.SystemActionsTypes) => {
             };
 
         case types.SET_USER:
-            return {
-                ...state,
-                user: action.payload,
-            };
-
         case types.CLEAR_USER:
             return {
                 ...state,
-                user: null,
+                user: action.payload,
             };
 
         default:

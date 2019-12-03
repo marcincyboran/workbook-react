@@ -1,13 +1,11 @@
 import React from 'react';
 import './Backdrop.scss';
-import PropTypes, { InferProps } from 'prop-types';
 
-const BackdropProps = {
-    onClose: PropTypes.func.isRequired,
+type BackdropProps = {
+    onClose: () => void;
 };
-type BackdropPropsType = InferProps<typeof BackdropProps>;
 
-const Backdrop: React.FC<BackdropPropsType> = ({ onClose }) => {
+const Backdrop: React.FC<BackdropProps> = ({ onClose }) => {
     return <div className="backdrop" onClick={onClose}></div>;
 };
 

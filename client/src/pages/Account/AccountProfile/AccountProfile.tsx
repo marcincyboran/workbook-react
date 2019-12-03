@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import PropTypes, { InferProps } from 'prop-types';
+import { User } from '../../../redux/system/duck/types';
 import { useFormik } from 'formik';
-import { Info } from '../../../helpers/types';
+import { InfoType } from '../../../helpers/types';
 import http from '../../../helpers/axios';
 import Helpers from '../../../helpers/shared';
-
 import Paragraph from '../../../components/UI/Typography/Paragraph/Paragraph';
 import PanelTitle from '../../../components/Panel/PanelTitle/PanelTitle';
 import PanelRow from '../../../components/Panel/PanelRow/PanelRow';
@@ -18,27 +17,24 @@ import FormGroup from '../../../components/Form/FormGroup/FormGroup';
 import Form from '../../../components/Form/Form';
 import FormSubmit from '../../../components/Form/FormSubmit/FormSubmit';
 
-const accountProfileProps = {
-    user: PropTypes.objectOf(PropTypes.any),
-};
-type accountProfilePropsType = InferProps<typeof accountProfileProps>;
+type AccountProfileProps = { user: User };
 
-const AccountProfile: React.FC<accountProfilePropsType> = ({ user }) => {
-    const validate = (prop: any) => (prop ? prop : '');
-    const [info, setInfo] = useState<Info>({
+const AccountProfile: React.FC<AccountProfileProps> = ({ user }) => {
+    const getValue = (prop: any) => (prop ? prop : '');
+    const [info, setInfo] = useState<InfoType>({
         type: '',
         msg: '',
     });
 
     const formik = useFormik({
         initialValues: {
-            firstName: validate(user!.firstName),
-            lastName: validate(user!.lastName),
-            phone: validate(user!.phone),
-            email: validate(user!.email),
-            address: validate(user!.address),
-            facebook: validate(user!.facebook),
-            linkedin: validate(user!.linkedin),
+            firstName: getValue(user.firstName),
+            lastName: getValue(user.lastName),
+            phone: getValue(user.phone),
+            email: getValue(user.email),
+            address: getValue(user.address),
+            facebook: getValue(user.facebook),
+            linkedin: getValue(user.linkedin),
         },
         validationSchema: Yup.object({
             firstName: Yup.string()
@@ -74,13 +70,13 @@ const AccountProfile: React.FC<accountProfilePropsType> = ({ user }) => {
 
     useEffect(() => {
         formik.setValues({
-            firstName: validate(user!.firstName),
-            lastName: validate(user!.lastName),
-            phone: validate(user!.phone),
-            email: validate(user!.email),
-            address: validate(user!.address),
-            facebook: validate(user!.facebook),
-            linkedin: validate(user!.linkedin),
+            firstName: getValue(user.firstName),
+            lastName: getValue(user.lastName),
+            phone: getValue(user.phone),
+            email: getValue(user.email),
+            address: getValue(user.address),
+            facebook: getValue(user.facebook),
+            linkedin: getValue(user.linkedin),
         });
     }, [user]);
 

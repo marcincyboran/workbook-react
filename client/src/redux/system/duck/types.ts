@@ -1,23 +1,18 @@
+import { AccountType } from '../../../helpers/types';
+
 export const SET_DOCUMENT_TITLE = 'SET_DOCUMENT_TITLE';
 export const SET_USER = 'SET_USER';
 export const CLEAR_USER = 'CLEAR_USER';
 
 export type Title = string;
 
-export interface User {
-    _id: string;
+export interface User extends AccountType {
     token: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    address: string;
-    role: string;
-    premium: string;
 }
 
 export interface SystemState {
     title: Title;
-    user: User | null;
+    user: User;
 }
 
 interface SetDocumentTitle {
@@ -32,6 +27,7 @@ interface SetUser {
 
 interface ClearUser {
     type: typeof CLEAR_USER;
+    payload: User;
 }
 
 export type SystemActionsTypes = SetDocumentTitle | SetUser | ClearUser;
