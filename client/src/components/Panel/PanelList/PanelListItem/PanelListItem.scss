@@ -1,0 +1,11 @@
+.panel {
+    &__list-item {
+        display: flex;
+        padding: var(--default-padding);
+        border: var(--border-lighter);
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+    }
+}

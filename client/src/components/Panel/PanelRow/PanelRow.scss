@@ -4,6 +4,9 @@
         padding-top: var(--default-padding);
         padding-bottom: var(--default-padding);
 
+        &--center { justify-content: center; }
+        &--right { justify-content: flex-end; }
+        
         &:not(:last-child) {
             border-bottom: var(--border-lighter);
         }

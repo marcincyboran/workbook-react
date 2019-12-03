@@ -1,24 +1,28 @@
 .heading-primary {
     font-size: 2.4rem;
     font-weight: 300;
-    color: var(--color-gray-dark-2);
-
     &--bold { font-weight: 400; }
-    &--primary { color: var(--color-primary); }
-    &--white { color: var(--color-white); }
-    &--secondary { color: var(--color-secondary); }
 }
 
 .heading-secondary {
     font-size: 1.8rem;
     font-weight: 400;
-    color: var(--color-gray-dark-2);
-
     &--bold { font-weight: 600; }
-    &--primary { color: var(--color-primary); }
+}
+
+.heading-tertiary {
+    font-size: 1.4rem;
+    font-weight: 400;
+    &--bold { font-weight: 600; }
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+    color: var(--color-gray-dark-2);
     &--white { color: var(--color-white); }
+    &--primary { color: var(--color-primary); }
     &--secondary { color: var(--color-secondary); }
-    
     &--underline { 
         position: relative;
         &::before {
@@ -32,3 +36,4 @@
         }
     }
 }
+ 

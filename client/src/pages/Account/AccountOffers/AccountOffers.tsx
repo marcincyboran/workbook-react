@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import './AccountsOffers.scss';
 import { useRouteMatch } from 'react-router-dom';
+import { OfferType } from '../../../helpers/types';
 import http from '../../../helpers/axios';
 
 import Button from '../../../components/UI/Button/Button';
 import Paragraph from '../../../components/UI/Typography/Paragraph/Paragraph';
 import PanelTitle from '../../../components/Panel/PanelTitle/PanelTitle';
 import PanelRow from '../../../components/Panel/PanelRow/PanelRow';
-import { OfferType } from '../../../helpers/types';
+import PanelList from '../../../components/Panel/PanelList/PanelList';
 
 type AccountOffersProps = { userID: string };
 
@@ -32,13 +34,8 @@ const AccountOffers: React.FC<AccountOffersProps> = ({ userID = '' }) => {
     return (
         <>
             <PanelTitle>Lista ofert:</PanelTitle>
-            {list.length > 0 ? (
-                list.map((offerEl: OfferType) => <PanelRow key={offerEl._id}>{offerEl.title}</PanelRow>)
-            ) : (
-                <Paragraph> You have no offers yet </Paragraph>
-            )}
-
-            <PanelRow>
+            {list.length > 0 ? <PanelList offers={list} /> : <Paragraph> You have no offers yet </Paragraph>}
+            <PanelRow align="right">
                 <Button link={`${match.url}/create`} icon="plus" color="primary">
                     Add an offer
                 </Button>
