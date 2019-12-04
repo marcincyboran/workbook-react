@@ -1,0 +1,44 @@
+@import './../../../style/shared.scss';
+
+.form {
+    &__field-upload {
+        min-height: 6rem;
+        display: inline-flex;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+
+        & > * {
+            display: inline-block;
+            margin-right: calc(var(--default-padding) / 2);
+            margin-bottom: calc(var(--default-padding) / 2);
+        }
+    }
+
+    &__field-upload-input {
+        display: none;
+    }
+
+    &__field-upload-label {
+        position: relative;
+        flex: 0 0 17rem;
+        height: 8rem;
+        display: inline-block;
+        border: var(--border-lighter);
+        border-radius: var(--default-border-radius);
+        cursor: pointer;
+
+        .icon { 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 50%;
+            width: 50%;
+        }
+
+        &:hover .icon {
+            fill: var(--color-tertiary)
+        }
+    }
+
+}

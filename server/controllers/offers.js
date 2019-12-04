@@ -32,8 +32,6 @@ module.exports.createOffer = asyncHandler(async (req, res, next) => {
         owner: req.account._id,
     });
 
-    console.log(offer);
-
     res.status(201).json({
         success: true,
         payload: offer,
@@ -48,4 +46,16 @@ module.exports.updateOffer = asyncHandler(async (req, res, next) => {});
 // @desc    Delete offer
 // @route   DELETE /api/v1/offers/:id
 // @acces   ADMIN / OWNER
-module.exports.deleteOffer = asyncHandler(async (req, res, next) => {});
+module.exports.deleteOffer = asyncHandler(async (req, res, next) => {
+    const offer = await Offer.findById(req.params.id);
+
+    if (!offer) return next(new ErrorResponse('There is no offer with given ID', 404));
+
+    const isNotOwner = offer.owner.toString() !== req.account._id.toString();
+    if (req.account.role !== 'admin' && isNotOwner)
+        return next(new ErrorResponse('You can only delete your own offers', 403));
+
+    await offer.remove();
+
+    res.status(200).json({ success: true, payload: {} });
+});

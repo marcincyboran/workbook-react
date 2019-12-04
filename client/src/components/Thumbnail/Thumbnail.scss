@@ -1,0 +1,8 @@
+.thumbnail {
+    max-width: 8rem;
+    max-height: 8rem;
+    object-fit: contain;
+    padding: 4px;
+    border-radius: var(--devault-border-radius);
+    border: var(--border-lighter);
+}

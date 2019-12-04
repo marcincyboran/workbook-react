@@ -5,7 +5,7 @@ import Helper from './../../../../helpers/shared';
 
 type HeadingProps = {
     tag: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p';
-    type: 'primary' | 'secondary';
+    type: 'primary' | 'secondary' | 'tertiary';
     mod?: string;
     className?: string;
 };

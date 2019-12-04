@@ -14,6 +14,6 @@ router
     .route('/:id')
     .get(getOffer)
     .put(updateOffer)
-    .delete(deleteOffer);
+    .delete(auth, access('user', 'admin'), deleteOffer);
 
 module.exports = router;

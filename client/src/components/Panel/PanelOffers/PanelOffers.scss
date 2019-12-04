@@ -1,0 +1,39 @@
+.panel {
+    &__offer-list {
+        list-style: none;
+        margin-bottom: var(--default-padding);
+    }
+
+    &__offer-item {
+        padding: calc(var(--default-padding) / 2) var(--default-padding);
+        border: var(--border-lighter);
+        border-radius: var(--default-border-radius);
+        display: flex;
+
+        & > :first-child {
+            flex: 1;
+            margin-right: var(--default-padding);
+        }
+
+        & > :last-child {
+            text-align: right;
+            display: flex;
+            align-items: center;
+
+            .icon { 
+                cursor: pointer;
+                padding: .5rem;
+                box-sizing: content-box;
+                border-radius: 50%;
+                
+                &:hover {
+                    background: var(--color-gray-light-2);
+                }
+            }
+        }
+
+        &:not(:last-child) {
+            margin-bottom: var(--small-vertical-gap);
+        }
+    }
+}

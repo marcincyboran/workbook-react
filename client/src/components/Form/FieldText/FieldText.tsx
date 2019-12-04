@@ -1,5 +1,4 @@
 import React from 'react';
-import './FieldText.scss';
 import classes from 'react-style-classes';
 import SvgSprite from './../../UI/SvgSprite/SvgSprite';
 

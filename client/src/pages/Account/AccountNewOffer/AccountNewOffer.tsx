@@ -16,6 +16,7 @@ import FieldText from '../../../components/Form/FieldText/FieldText';
 import FormGroup from '../../../components/Form/FormGroup/FormGroup';
 import Form from '../../../components/Form/Form';
 import FormSubmit from '../../../components/Form/FormSubmit/FormSubmit';
+import FieldUpload from '../../../components/Form/FieldUpload/FieldUpload';
 
 const accountProfileProps = {
     user: PropTypes.objectOf(PropTypes.any),
@@ -167,6 +168,26 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
                             placeholder="tag1, tag2, tag3"
                         />
                         <span></span>
+                    </FormGroup>
+                </PanelRowRight>
+            </PanelRow>
+            <PanelRow>
+                <PanelRowLeft>
+                    <PanelRowTitle>Photos</PanelRowTitle>
+                    <Paragraph>Zdjęcia ułatwią potencjalnym zainteresowanym oszacowanie kosztów</Paragraph>
+                </PanelRowLeft>
+                <PanelRowRight>
+                    <FormGroup>
+                        <FieldUpload />
+                        {/* <FieldText
+                            label="Tags"
+                            type="text"
+                            getFieldProps={formik.getFieldProps('tags')}
+                            errors={formik.errors.tags as string}
+                            touched={formik.touched.tags as boolean}
+                            placeholder="tag1, tag2, tag3"
+                        />
+                        <span></span> */}
                     </FormGroup>
                 </PanelRowRight>
             </PanelRow>
