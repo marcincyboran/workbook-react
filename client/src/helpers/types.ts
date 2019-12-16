@@ -53,7 +53,7 @@ export interface OfferType {
     location: LocationType;
     tags: string[];
     slug: string;
-    photos: ImageType[];
+    imgs: ImageType[];
     budget?: number;
     owner: string;
     createdAt: CreatedAt;

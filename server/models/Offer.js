@@ -49,12 +49,15 @@ const offerSchema = new mongoose.Schema({
         required: false,
     },
     slug: String,
-    photos: [
-        {
-            src: String,
-            alt: String,
-        },
-    ],
+    imgs: {
+        type: [
+            {
+                src: String,
+                alt: String,
+            },
+        ],
+        default: [],
+    },
     budget: Number,
     owner: {
         type: mongoose.Schema.ObjectId,

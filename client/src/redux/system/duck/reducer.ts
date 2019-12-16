@@ -7,7 +7,7 @@ const initialStore: types.SystemState = {
         token: '',
         firstName: 'John',
         lastName: 'Doe',
-        address: 'None',
+        address: 'None 12',
         email: 'john.doe@gmail.com',
         role: 'user',
         location: {

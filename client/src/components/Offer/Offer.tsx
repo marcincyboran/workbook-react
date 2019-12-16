@@ -18,9 +18,10 @@ const Offer: React.FC<OfferProps> = ({ offerData }) => {
 
     let imgSrc = defaultPlaceholder;
     let imgAlt = 'Offer image pleaceholder';
-    if (offerData.photos.length > 0) {
-        imgSrc = offerData.photos[0].src;
-        imgAlt = offerData.photos[0].alt;
+    console.log(offerData);
+    if (offerData.imgs.length > 0) {
+        imgSrc = offerData.imgs[0].src;
+        imgAlt = offerData.imgs[0].alt;
     }
 
     return (

@@ -1,23 +1,36 @@
-import React, { ChangeEvent, useState, DragEvent, useEffect } from 'react';
+import React, { ChangeEvent, useState, DragEvent } from 'react';
 import './FieldUpload.scss';
 import SvgSprite from '../../UI/SvgSprite/SvgSprite';
 import Thumbnail from '../../../components/Thumbnail/Thumbnail';
 import { InfoType } from '../../../helpers/types';
+import Validators from '../../../helpers/validators';
 
 type FieldUploadProps = {
     // value?: File[]
+    onUpload: (files: File[]) => void;
 };
 
-const FieldUpload: React.FC<FieldUploadProps> = ({}) => {
+const FieldUpload: React.FC<FieldUploadProps> = ({ onUpload }) => {
     const [files, setFiles] = useState<File[]>([]);
     const [info, setInfo] = useState<InfoType>();
 
-    const save = (add: File[]) => {
-        const filtered = add.filter(el => {
-            console.log(el.name);
-        });
-        console.log(filtered);
-        setFiles([...files, ...add]);
+    const save = async (add: File[]) => {
+        // Filter duplicated files
+        const fileNames = files.map(file => file.name);
+        add = add.filter(file => !fileNames.includes(file.name));
+
+        // Validate files format
+        // const isValidArr = await Promise.all(add.map(async file => {
+        //     return Validators.validateImages(file)}
+        // ));
+
+        // add = add.filter((file, i) => isValidArr[i]);
+
+        // TODO validate files size
+
+        const finalFiles = [...files, ...add];
+        setFiles(finalFiles);
+        onUpload(finalFiles);
     };
 
     const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {

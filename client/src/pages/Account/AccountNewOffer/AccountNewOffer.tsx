@@ -3,8 +3,7 @@ import * as Yup from 'yup';
 import http from '../../../helpers/axios';
 import { InfoType } from '../../../helpers/types';
 import { useFormik } from 'formik';
-import PropTypes, { InferProps } from 'prop-types';
-
+import { User } from '../../../redux/system/duck/types';
 import PanelTitle from '../../../components/Panel/PanelTitle/PanelTitle';
 import Paragraph from '../../../components/UI/Typography/Paragraph/Paragraph';
 import PanelRow from '../../../components/Panel/PanelRow/PanelRow';
@@ -18,12 +17,11 @@ import Form from '../../../components/Form/Form';
 import FormSubmit from '../../../components/Form/FormSubmit/FormSubmit';
 import FieldUpload from '../../../components/Form/FieldUpload/FieldUpload';
 
-const accountProfileProps = {
-    user: PropTypes.objectOf(PropTypes.any),
+type AccountNewOfferProps = {
+    user: User;
 };
-type AccountProfilePropsType = InferProps<typeof accountProfileProps>;
 
-const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
+const AccountNewOffer: React.FC<AccountNewOfferProps> = ({ user }) => {
     const [info, setInfo] = useState<InfoType>({
         type: '',
         msg: '',
@@ -34,9 +32,10 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
             title: 'Test title',
             shortText: 'Test short text 1',
             description: 'Test description must have min. of 20 characters...',
-            address: user!.address ? user!.address : '',
+            address: user!.address ? user!.address : 'Test 12',
             budget: '',
             tags: 'test, test',
+            imgs: '',
         },
         validationSchema: Yup.object({
             title: Yup.string()
@@ -52,20 +51,33 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
                 .max(2048, 'Must be max of 2048 characters long')
                 .required('Required'),
             address: Yup.string()
-                .min(5, 'Must be min 3 characters long')
+                .min(5, 'Must be min 5 characters long')
                 .max(50, 'Must be max of 50 characters long'),
             budget: Yup.string(),
             tags: Yup.string(),
         }),
         onSubmit: async (values, formikHelpers) => {
+            console.log(values);
             setInfo({ type: '', msg: '' });
             try {
                 formikHelpers.resetForm();
-                const res = await http.post('offers', {
-                    ...values,
-                    budget: parseInt(values.budget),
-                    tags: values.tags.replace(' ', '').split(','),
-                });
+
+                if (values.budget) parseInt(values.budget);
+                if (values.tags) values.tags.replace(' ', '').split(',');
+
+                const bodyFormData = new FormData();
+                for (const v in values) {
+                    if (v === 'imgs' && (values as any)[v].length) {
+                        (values as any)[v].forEach((file: File) => {
+                            bodyFormData.append(v, file);
+                            console.log(file);
+                        });
+                        continue;
+                    }
+                    bodyFormData.append(v, (values as any)[v]);
+                }
+
+                await http.post('offers', bodyFormData);
                 setInfo({ type: 'info', msg: 'Created' });
             } catch (err) {
                 if (err.response) setInfo({ type: 'error', msg: err.response.data.error || err.response.statusText });
@@ -73,6 +85,10 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
             }
         },
     });
+
+    const onFileUpload = (files: File[]) => {
+        formik.setFieldValue('imgs', files);
+    };
 
     return (
         <Form handleSubmit={formik.handleSubmit} useCustomError>
@@ -178,16 +194,7 @@ const AccountNewOffer: React.FC<AccountProfilePropsType> = ({ user }) => {
                 </PanelRowLeft>
                 <PanelRowRight>
                     <FormGroup>
-                        <FieldUpload />
-                        {/* <FieldText
-                            label="Tags"
-                            type="text"
-                            getFieldProps={formik.getFieldProps('tags')}
-                            errors={formik.errors.tags as string}
-                            touched={formik.touched.tags as boolean}
-                            placeholder="tag1, tag2, tag3"
-                        />
-                        <span></span> */}
+                        <FieldUpload onUpload={onFileUpload} />
                     </FormGroup>
                 </PanelRowRight>
             </PanelRow>

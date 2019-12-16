@@ -1,5 +1,7 @@
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utilities/errorResponse');
+const crypto = require('crypto');
+const path = require('path');
 const Account = require('../models/Account');
 const Offer = require('../models/Offer');
 const _ = require('lodash/object');
@@ -14,22 +16,63 @@ module.exports.getOffers = asyncHandler(async (req, res, next) => {
 // @desc    Get offer details
 // @route   GET /api/v1/offers/:id
 // @acces   PUBLIC
-module.exports.getOffer = asyncHandler(async (req, res, next) => {});
+module.exports.getOffer = asyncHandler(async (req, res, next) => {
+    if (!req.params.id) return next(new ErrorResponse('There is no offer with given ID', 404));
+
+    const offer = Offer.findById(req.params.id);
+
+    res.status(200).json({
+        success: true,
+        payload: offer,
+    });
+});
 
 // @desc    Create offer
 // @route   POST /api/v1/offers
 // @acces   ADMIN / USERS
 module.exports.createOffer = asyncHandler(async (req, res, next) => {
+    let imgs = [];
+
     if (req.account.role !== 'admin') {
         const offersCounter = await Offer.find({ owner: req.account._id }).countDocuments();
-        if (!req.account.premium && offersCounter >= 3)
+        if (!req.account.premium && offersCounter >= process.env.MAX_OFFERS_LIMIT) {
             return next(new ErrorResponse('Reached maxiumum number of offerts for free users', 402));
+        }
+    }
+
+    if (req.files) {
+        if (Array.isArray(req.files.imgs)) imgs = req.files.imgs;
+        else imgs.push(req.files.imgs);
+
+        imgs = imgs.map(img => {
+            if (img.size >= process.env.MAX_FILE_SIZE) {
+                return next(new ErrorResponse(`${img.name} is too big`, 400));
+            }
+            if (!img.mimetype.startsWith('image')) {
+                return next(new ErrorResponse('Invalid mimetype, only images allowed', 400));
+            }
+
+            const imgName = `img_${crypto.randomBytes(8).toString('hex')}${path.parse(img.name).ext}`;
+            const alt = `${path.parse(img.name).name}`;
+            const imgPath = `${process.env.FILES_DIR}/imgs/${imgName}`;
+            img.mv(imgPath, async err => {
+                if (err) {
+                    console.error(err);
+                    return next(new ErrorResponse('Image transfer failed', 500));
+                }
+            });
+            return {
+                src: imgPath,
+                alt,
+            };
+        });
     }
 
     const offer = await Offer.create({
-        ...req.body,
+        ..._.omit(req.body, 'imgs'),
         premium: req.account.premium,
         owner: req.account._id,
+        imgs,
     });
 
     res.status(201).json({
