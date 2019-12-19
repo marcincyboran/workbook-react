@@ -8,9 +8,9 @@ type NavigationState = Array<{ link: string; desc: string }>;
 const Navigation: React.FC = () => {
     const [links] = useState<NavigationState>([
         { link: '/companies', desc: 'Firmy' },
-        { link: '/company', desc: 'Firma' },
+        { link: '/companies/1', desc: 'Firma 1' },
         { link: '/offers', desc: 'Oferty' },
-        { link: '/offer', desc: 'Oferta' },
+        { link: '/offers/1', desc: 'Oferta 1' },
         { link: '/login', desc: 'Login' },
         { link: '/register', desc: 'Register' },
         { link: '/account', desc: 'Account' },

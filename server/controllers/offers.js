@@ -44,26 +44,33 @@ module.exports.createOffer = asyncHandler(async (req, res, next) => {
         if (Array.isArray(req.files.imgs)) imgs = req.files.imgs;
         else imgs.push(req.files.imgs);
 
-        imgs = imgs.map(img => {
+        imgs = imgs.map((img, i) => {
+            if (i >= process.env.MAX_OFFER_IMGS) return;
+
             if (img.size >= process.env.MAX_FILE_SIZE) {
                 return next(new ErrorResponse(`${img.name} is too big`, 400));
             }
+
             if (!img.mimetype.startsWith('image')) {
                 return next(new ErrorResponse('Invalid mimetype, only images allowed', 400));
             }
 
-            const imgName = `img_${crypto.randomBytes(8).toString('hex')}${path.parse(img.name).ext}`;
-            const alt = `${path.parse(img.name).name}`;
-            const imgPath = `${process.env.FILES_DIR}/imgs/${imgName}`;
-            img.mv(imgPath, async err => {
+            const imgName = `${crypto.randomBytes(8).toString('hex')}${path.parse(img.name).ext}`;
+            const imgAlt = `${path
+                .parse(img.name)
+                .name.split(/(?:-|_)/g)
+                .join(' ')}`;
+
+            img.mv(`${process.env.FILES_DIR}/imgs/${imgName}`, async err => {
                 if (err) {
                     console.error(err);
                     return next(new ErrorResponse('Image transfer failed', 500));
                 }
             });
+
             return {
-                src: imgPath,
-                alt,
+                src: `${process.env.DOMAIN}/uploads/imgs/${imgName}`,
+                alt: imgAlt.charAt(0).toUpperCase() + imgAlt.substring(1),
             };
         });
     }

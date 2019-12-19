@@ -22,10 +22,7 @@ type AccountNewOfferProps = {
 };
 
 const AccountNewOffer: React.FC<AccountNewOfferProps> = ({ user }) => {
-    const [info, setInfo] = useState<InfoType>({
-        type: '',
-        msg: '',
-    });
+    const [info, setInfo] = useState<InfoType | null>(null);
 
     const formik = useFormik({
         initialValues: {
@@ -58,7 +55,7 @@ const AccountNewOffer: React.FC<AccountNewOfferProps> = ({ user }) => {
         }),
         onSubmit: async (values, formikHelpers) => {
             console.log(values);
-            setInfo({ type: '', msg: '' });
+            setInfo(null);
             try {
                 formikHelpers.resetForm();
 
@@ -93,7 +90,7 @@ const AccountNewOffer: React.FC<AccountNewOfferProps> = ({ user }) => {
     return (
         <Form handleSubmit={formik.handleSubmit} useCustomError>
             <PanelTitle>Create an offer:</PanelTitle>
-            <PanelInfo type={info.type}>{info.msg}</PanelInfo>
+            {info ? <PanelInfo type={info.type}>{info.msg}</PanelInfo> : null}
             <PanelRow>
                 <PanelRowLeft>
                     <PanelRowTitle>Tytuł oferty</PanelRowTitle>

@@ -2,7 +2,6 @@
 
 .form {
     &__field-upload {
-        min-height: 6rem;
         display: inline-flex;
         flex-wrap: wrap;
         margin-bottom: 0;
@@ -39,6 +38,18 @@
         &:hover .icon {
             fill: var(--color-tertiary)
         }
+    }
+
+    &__field-upload-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        font-size: 1.2rem;
+        transform: translateY(100%);
+        letter-spacing: 1px;
+
+        &.info { color: var(--color-secondary); }
+        &.error { color: var(--color-primary); }
     }
 
 }

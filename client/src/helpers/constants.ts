@@ -20,4 +20,6 @@ export default {
             zipcode: '',
         },
     },
+    MAX_OFFER_IMGS: 4,
+    MAX_FILE_SIZE: 1000000,
 };

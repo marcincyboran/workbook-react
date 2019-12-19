@@ -22,7 +22,7 @@ export interface ReviewType {
 }
 
 export interface InfoType {
-    type: string;
+    type: 'info' | 'error';
     msg: string;
 }
 

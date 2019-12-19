@@ -21,10 +21,7 @@ type AccountProfileProps = { user: User };
 
 const AccountProfile: React.FC<AccountProfileProps> = ({ user }) => {
     const getValue = (prop: any) => (prop ? prop : '');
-    const [info, setInfo] = useState<InfoType>({
-        type: '',
-        msg: '',
-    });
+    const [info, setInfo] = useState<InfoType | null>();
 
     const formik = useFormik({
         initialValues: {
@@ -55,7 +52,7 @@ const AccountProfile: React.FC<AccountProfileProps> = ({ user }) => {
                 .required('Required'),
         }),
         onSubmit: async (values, formikHelpers) => {
-            setInfo({ type: '', msg: '' });
+            setInfo(null);
             try {
                 formikHelpers.resetForm();
                 const res = await http.put('auth/updatedetails', values);
@@ -83,7 +80,7 @@ const AccountProfile: React.FC<AccountProfileProps> = ({ user }) => {
     return (
         <Form handleSubmit={formik.handleSubmit} useCustomError>
             <PanelTitle>Ustawienia profilu:</PanelTitle>
-            <PanelInfo type={info.type}>{info.msg}</PanelInfo>
+            {info ? <PanelInfo type={info.type}>{info.msg}</PanelInfo> : null}
             <PanelRow>
                 <PanelRowLeft>
                     <PanelRowTitle>Imię i nazwisko</PanelRowTitle>

@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState, DragEvent } from 'react';
 import './FieldUpload.scss';
+import classes from 'react-style-classes';
 import SvgSprite from '../../UI/SvgSprite/SvgSprite';
 import Thumbnail from '../../../components/Thumbnail/Thumbnail';
-import { InfoType } from '../../../helpers/types';
 import Validators from '../../../helpers/validators';
+import CONSTANTS from '../../../helpers/constants';
+import { InfoType } from '../../../helpers/types';
 
 type FieldUploadProps = {
     // value?: File[]
@@ -12,21 +14,22 @@ type FieldUploadProps = {
 
 const FieldUpload: React.FC<FieldUploadProps> = ({ onUpload }) => {
     const [files, setFiles] = useState<File[]>([]);
-    const [info, setInfo] = useState<InfoType>();
+    const [info, setInfo] = useState<InfoType | null>();
 
     const save = async (add: File[]) => {
+        setInfo(null);
+
         // Filter duplicated files
         const fileNames = files.map(file => file.name);
         add = add.filter(file => !fileNames.includes(file.name));
 
-        // Validate files format
-        // const isValidArr = await Promise.all(add.map(async file => {
-        //     return Validators.validateImages(file)}
-        // ));
+        // Validate format
+        const isValidArr = await Promise.all(add.map(async file => Validators.validateImages(file)));
+        if (isValidArr.some(el => el === false)) return setInfo({ type: 'error', msg: 'Invalid file format' });
 
-        // add = add.filter((file, i) => isValidArr[i]);
-
-        // TODO validate files size
+        // Validate size
+        if (add.some(el => el.size > CONSTANTS.MAX_FILE_SIZE))
+            return setInfo({ type: 'error', msg: 'Image size is too big' });
 
         const finalFiles = [...files, ...add];
         setFiles(finalFiles);
@@ -61,8 +64,8 @@ const FieldUpload: React.FC<FieldUploadProps> = ({ onUpload }) => {
                     accept="image/*"
                 />
                 <SvgSprite icon="plus" color="primary" />
-                {info ? info : null}
             </label>
+            {info ? <span className={classes('form__field-upload-info', info.type)}> {info.msg} </span> : null}
         </div>
     );
 };
