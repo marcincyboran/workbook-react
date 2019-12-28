@@ -17,9 +17,12 @@ module.exports.getOffers = asyncHandler(async (req, res, next) => {
 // @route   GET /api/v1/offers/:id
 // @acces   PUBLIC
 module.exports.getOffer = asyncHandler(async (req, res, next) => {
-    if (!req.params.id) return next(new ErrorResponse('There is no offer with given ID', 404));
+    if (!req.params.id) return next(new ErrorResponse('Offer ID required', 404));
 
-    const offer = Offer.findById(req.params.id);
+    const offer = await Offer.findById(req.params.id).populate('owner');
+    console.log(offer);
+
+    if (!offer) return next(new ErrorResponse('There is no offer with given ID', 404));
 
     res.status(200).json({
         success: true,

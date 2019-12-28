@@ -1,79 +1,119 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './OfferDetails.scss';
+import { useParams, useRouteMatch } from 'react-router-dom';
+import { OfferType } from '../../helpers/types';
+import { Link } from 'react-router-dom';
+import CONSTANTS from '../../helpers/constants';
+import http from '../../helpers/axios';
+import Gallery from '../../components/Gallery/Gallery';
+import Loader from '../../components/UI/Loader/Loader';
+import List from '../../components/UI/List/List';
+import ListItem from '../../components/UI/List/ListItem/ListItem';
+import Heading from '../../components/UI/Typography/Heading/Heading';
+import Hr from '../../components/UI/Hr/Hr';
+import Tag from '../../components/UI/Typography/Tag/Tag';
+import Button from '../../components/UI/Button/Button';
 
 const OfferDetailPage: React.FC = () => {
+    const { id } = useParams();
+    const [data, setData] = useState<OfferType>();
+    const match = useRouteMatch();
+
+    const fetchOfferDetails = async () => {
+        try {
+            const res = await http(`/offers/${id}`);
+            console.log(res);
+            if (res.data.payload) setData(res.data.payload);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useEffect(() => {
+        if (id) fetchOfferDetails();
+    }, [id]);
+
     return (
-        <section className="offerDetail" data-id="${offerDetail.id}">
-            <div className="offerDetail__top">
-                <h2 className="heading-primary offerDetail__top-title">Title</h2>
-            </div>
-            <div className="gallery">
-                <img src="" alt="gallery photo 1" className="gallery-item" />
-                <img src="" alt="gallery photo 2" className="gallery-item" />
-                <img src="" alt="gallery photo 3" className="gallery-item" />
-                <img src="" alt="gallery photo 4" className="gallery-item" />
-            </div>
-            <div className="offerDetail__content">
-                <div className="offerDetail__description">
-                    <h3 className="heading-secondary u-mb-medium">Opis:</h3>
-                    <p className="offerDetail__description-text u-mb-big">Text</p>
-                    <p className="offerDetail__description-text u-mb-huge">TextDetails</p>
-                    <a href="#TODO_NAVLINK" className="button button--primary button--icon button--big">
-                        <span>Złóż ofertę</span>
-                        <svg className="icon">
-                            <use href="./assets/svgs/sprite.svg#icon-plus"></use>
-                        </svg>
-                    </a>
-                </div>
-                <aside className="offerDetail__sidebar">
-                    <h3 className="heading-secondary u-mb-medium">Kontakt:</h3>
-                    <ul className="u-list u-mb-big">
-                        <li className="u-list__item u-list__item--normal">
-                            <svg className="icon icon--normal icon--secondary">
-                                <use href="./assets/svgs/sprite.svg#icon-user"></use>
-                            </svg>
-                            Name
-                        </li>
-                        <li className="u-list__item u-list__item--normal">
-                            <svg className="icon icon--normal icon--secondary">
-                                <use href="./assets/svgs/sprite.svg#icon-old-phone"></use>
-                            </svg>
-                            Tel
-                        </li>
-                        <li className="u-list__item u-list__item--normal">
-                            <svg className="icon icon--normal icon--secondary">
-                                <use href="./assets/svgs/sprite.svg#icon-email"></use>
-                            </svg>
-                            Mail
-                        </li>
-                        <li className="u-list__item u-list__item--normal">
-                            <svg className="icon icon--normal icon--secondary">
-                                <use href="./assets/svgs/sprite.svg#icon-facebook"></use>
-                            </svg>
-                            <a href="https://www.facebook.com/${offerDetail.details.fb}" target="_blank">
-                                Profil
-                            </a>
-                        </li>
-                    </ul>
-                    <h3 className="heading-secondary u-mb-medium">Lokalizacja:</h3>
-                    <ul className="u-list u-mb-big">
-                        <li className="u-list__item u-list__item--normal">
-                            <svg className="icon icon--normal icon--secondary">
-                                <use href="./assets/svgs/sprite.svg#icon-location-pin"></use>
-                            </svg>
-                            <a href="https://www.google.com/maps?q=${offerDetail.location}" target="_blank">
-                                Bogatynia
-                            </a>
-                        </li>
-                    </ul>
-                    <iframe
-                        className="offerDetail__map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d320513.1439457553!2d16.71168578074838!3d51.126743182413364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fe9c2d4b58abf%3A0xb70956aec205e0f5!2zV3JvY8WCYXc!5e0!3m2!1sen!2spl!4v1551616973081"
-                        style={{ border: 0 }}
-                    />
-                </aside>
-            </div>
-        </section>
+        <>
+            {data ? (
+                <section className="offerDetail">
+                    <div className="offerDetail__top">
+                        <Heading tag="h2" type="primary" className="offerDetail__top-title">
+                            {data.title}
+                        </Heading>
+                    </div>
+                    <Gallery imgs={data.imgs} />
+                    <div className="offerDetail__content">
+                        <div className="offerDetail__description">
+                            <Heading tag="p" type="secondary" className="u-mb-medium">
+                                {data.shortText}
+                            </Heading>
+                            <Hr color="secondary" />
+                            <p>
+                                Tags:{' '}
+                                {data.tags.map((tag, i) => (
+                                    <Tag size="small" key={tag + i}>
+                                        {tag}
+                                    </Tag>
+                                ))}
+                            </p>
+                            <p className="offerDetail__description-text">{data.description}</p>
+                            <Button link={`${match.url}/add`} icon="plus" color="primary">
+                                Złóż ofertę
+                            </Button>
+                        </div>
+                        <aside className="offerDetail__sidebar">
+                            <Heading tag="h3" type="secondary" className="u-mb-medium">
+                                Kontakt:
+                            </Heading>
+                            <List>
+                                <ListItem type="normal" customIcon="user">
+                                    {data.owner.firstName} {data.owner.lastName}
+                                </ListItem>
+                                <ListItem type="normal" customIcon="old-phone">
+                                    {data.owner.phone}
+                                </ListItem>
+                                <ListItem type="normal" customIcon="email">
+                                    <a href={`mailto:${data.owner.email}`}>{data.owner.email}</a>
+                                </ListItem>
+                                <ListItem type="normal" customIcon="star">
+                                    <Link
+                                        to={{
+                                            pathname: `/users/${data.owner._id}`,
+                                            state: { fromOfferDetail: true },
+                                        }}
+                                    >
+                                        Owner profile
+                                    </Link>
+                                </ListItem>
+                                {/* <ListItem type="normal" customIcon="facebook" >Facebook ??</ListItem> */}
+                                {/* <ListItem type="normal" customIcon="linkedin" >Linkedin ??</ListItem> */}
+                            </List>
+                            <h3 className="heading-secondary u-mb-medium">Lokalizacja:</h3>
+                            <List addClass="u-mb-big">
+                                <ListItem type="normal" customIcon="location-pin">
+                                    <a
+                                        href={`https://www.google.com/maps?q=${data.location.city}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {data.location.city}
+                                    </a>
+                                </ListItem>
+                            </List>
+                            <iframe
+                                title={data.location.city}
+                                className="offerDetail__map"
+                                src={`https://maps.google.com/maps/embed/v1/place?key=${CONSTANTS.MAP_API}q=${data.location.coordinates[1]},${data.location.coordinates[0]}`}
+                                style={{ border: 0 }}
+                            />
+                        </aside>
+                    </div>
+                </section>
+            ) : (
+                <Loader />
+            )}
+        </>
     );
 };
 

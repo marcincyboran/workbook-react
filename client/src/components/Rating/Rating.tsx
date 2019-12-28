@@ -3,13 +3,14 @@ import SvgSprite from '../UI/SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
 
 type RatingProps = {
-    likes: number;
-    votes: number;
+    likes?: number;
+    votes?: number;
     stars?: number;
+    color?: 'primary' | 'secondary' | 'tertiary';
 };
 
-const Rating: React.FC<RatingProps> = ({ likes, votes, stars = 5 }) => {
-    const fullStars = Math.round((likes / votes) * stars!);
+const Rating: React.FC<RatingProps> = ({ likes, votes, stars = 5, color = 'tertiary' }) => {
+    const fullStars = votes ? Math.round((likes! / votes) * stars) : likes;
 
     let rating = Array(stars)
         .fill(1)
@@ -18,12 +19,12 @@ const Rating: React.FC<RatingProps> = ({ likes, votes, stars = 5 }) => {
                 <SvgSprite
                     icon="star"
                     key={i}
-                    className={classes('icon', 'icon--small', `icon--${i < fullStars ? 'tertiary' : 'blank'}`)}
+                    className={classes('icon', 'icon--small', `icon--${i < fullStars! ? color : 'blank'}`)}
                 />
             );
         });
 
-    return <div>{rating}</div>;
+    return <>{rating}</>;
 };
 
 export default Rating;

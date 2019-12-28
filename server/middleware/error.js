@@ -10,6 +10,7 @@ module.exports = (err, req, res, next) => {
     // Mongoose bad ObjectId
     if (err.name === 'CastError') {
         error = new ResponseError(`[Error Handler] Resource not found with id of ${err.value}.`, 404);
+        console.log('Działa');
     }
 
     // Mongoose duplicate key

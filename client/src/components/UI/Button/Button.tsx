@@ -5,9 +5,9 @@ import SvgSprite from './../SvgSprite/SvgSprite';
 import classes from 'react-style-classes';
 
 type ButtonProps = {
-    link: string;
+    link: string | object;
     size?: 'big' | 'small';
-    color?: 'primary' | 'secondary' | 'tertiary';
+    color?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
     icon?: string;
     className?: string;
     rotateIcon?: '90' | '180' | '270';
@@ -22,10 +22,19 @@ const Button: React.FC<ButtonProps> = ({ link, children, size, color, icon, clas
         icon && `button--icon`
     );
     return (
-        <Link to={link} className={buttonClasses}>
-            <span>{children}</span>
-            {icon && <SvgSprite icon={icon} rotate={rotateIcon} />}
-        </Link>
+        <>
+            {color !== 'disabled' ? (
+                <Link to={link} className={buttonClasses}>
+                    <span>{children}</span>
+                    {icon && <SvgSprite icon={icon} rotate={rotateIcon} />}
+                </Link>
+            ) : (
+                <span className={buttonClasses}>
+                    <span>{children}</span>
+                    {icon && <SvgSprite icon={icon} rotate={rotateIcon} />}
+                </span>
+            )}
+        </>
     );
 };
 

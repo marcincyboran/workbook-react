@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Offers.scss';
+import { OfferType } from '../../helpers/types';
 import http from '../../helpers/axios';
 import Offer from '../../components/Offer/Offer';
 import Heading from '../../components/UI/Typography/Heading/Heading';
 import Loader from '../../components/UI/Loader/Loader';
-import { OfferType } from '../../helpers/types';
 
 const OffersPage: React.FC = () => {
     const [data, setData] = useState<OfferType[]>([]);

@@ -22,4 +22,6 @@ export default {
     },
     MAX_OFFER_IMGS: 4,
     MAX_FILE_SIZE: 1000000,
+
+    MAP_API: 'AIzaSyA0eLeg_EV7QHpFlX107Ci9SSY-HEdcfto&',
 };

@@ -1,5 +1,6 @@
 .tag {
     display: inline-block;
+    font-size: 1.4rem;
     padding: .2rem 1rem;
     border-radius: 3rem;
     background-color: var(--color-gray-light-1);
@@ -11,5 +12,17 @@
         color: var(--color-gray-dark-1);
     }
 
+    &--simple {
+
+    }
+
+    &--small {
+        font-size: 1rem;
+    }
+
+    &--big {
+        font-size: 1.6rem;
+    }
+    
     &:not(:last-of-type) { margin-right: .4rem; }
 }

@@ -2,10 +2,10 @@
     background-color: var(--color-white);
     border-radius: var(--default-border-radius);
     box-shadow: var(--shadow-small-middle);
-
+    position: relative;
 
     &__top {
-        border-bottom: var(--border-light);
+        // border-bottom: var(--border-light);
         // box-shadow: var(--shadow-small-light);
         
         &-title {
@@ -23,6 +23,11 @@
         font-size: 1.4rem;
         padding: calc(2 * var(--default-padding));
         margin-right: calc(2 * var(--default-horizontal-gap));
+    }
+
+    &__description-text {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
     }
 
     &__sidebar {

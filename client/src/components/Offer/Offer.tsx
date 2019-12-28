@@ -1,6 +1,7 @@
 import React from 'react';
 import './Offer.scss';
 import { Link } from 'react-router-dom';
+import LazyLoad from 'react-lazyload';
 import classes from 'react-style-classes';
 import Helpers from '../../helpers/shared';
 import SvgSprite from '../UI/SvgSprite/SvgSprite';
@@ -8,17 +9,21 @@ import Tag from '../UI/Typography/Tag/Tag';
 import Heading from '../UI/Typography/Heading/Heading';
 import defaultPlaceholder from '../../assets/imgs/placeholder_default.png';
 import { OfferType } from '../../helpers/types';
+import LoaderImg from '../UI/LoaderImg/LoaderImg';
 
 type OfferProps = {
     offerData: OfferType;
 };
 
 const Offer: React.FC<OfferProps> = ({ offerData }) => {
-    const tags = offerData.tags.map((tag, i) => <Tag key={tag + i}>{tag}</Tag>);
+    const tags = offerData.tags.map((tag, i) => (
+        <Tag size="small" key={tag + i}>
+            {tag}
+        </Tag>
+    ));
 
     let imgSrc = defaultPlaceholder;
     let imgAlt = 'Offer image pleaceholder';
-    console.log(offerData);
     if (offerData.imgs.length > 0) {
         imgSrc = offerData.imgs[0].src;
         imgAlt = offerData.imgs[0].alt;
@@ -28,7 +33,9 @@ const Offer: React.FC<OfferProps> = ({ offerData }) => {
         <article className={classes('offer', offerData.premium && 'offer--premium')}>
             <div className="offer__top">
                 <figure className="offer__image-box">
-                    <img src={imgSrc} alt={imgAlt} className="offer__image" />
+                    <LazyLoad once={true} placeholder={<LoaderImg />}>
+                        <img src={imgSrc} alt={imgAlt} className="offer__image" />
+                    </LazyLoad>
                 </figure>
                 <div className="offer__content">
                     <div className="offer__content-top">

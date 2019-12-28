@@ -1,0 +1,100 @@
+.companyDetail {
+    background-color: var(--color-white);
+    border-radius: var(--default-border-radius);
+    box-shadow: var(--shadow-small-middle);
+
+    &__top {
+        display: flex;
+        align-items: center;
+        // border-bottom: var(--border-light);
+    }
+    
+    &__top-heading {
+        margin-right: auto;
+        padding: calc(var(--default-padding) / 2) var(--default-padding);
+    }
+
+    &__top-location {
+        align-self: stretch;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 var(--default-padding);
+        font-size: 1.6rem;
+        border-left: var(--border-lighter);
+
+        &:link,
+        &:visited {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        &:hover {
+            color: var(--color-primary-dark);
+        }
+    }
+
+    &__top-rate {
+        align-self: stretch;
+        padding: 0 var(--default-padding);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        font-weight: 300;
+        color: var(--color-white);
+        background-color: var(--color-primary);
+    }
+
+    &__content {
+        display: flex;
+        padding: calc(2 * var(--default-padding));
+    }
+
+    &__description {
+        flex: 0 1 60%;
+        margin-right: calc(2 * var(--default-horizontal-gap));
+    }
+
+    &__description-text {
+        font-size: 1.4rem;
+        padding-left: 1rem;
+    }
+
+    &__site {
+        display: flex;
+        align-items: center;
+        transition: color .3s;
+
+        & .icon {
+            margin: 0 1rem;
+        }
+        &:link,
+        &:visited {
+            text-decoration: none;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+
+        &:hover,
+        &:active {
+            color: var(--color-primary);
+        }
+    }
+
+    &__reviews {
+        flex: 1;
+    }
+
+    &__bottom {
+        border-top: var(--border-light);
+        background-color: var(--color-gray-light-1);
+
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: calc(2 * var(--default-bar-height));
+    }
+}

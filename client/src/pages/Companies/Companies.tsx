@@ -8,6 +8,7 @@ import { CompanyType } from '../../helpers/types';
 
 const CompaniesPage: React.FC = () => {
     const [data, setData] = useState<CompanyType[]>([]);
+
     const fetchOffers = async () => {
         try {
             const res = await http('/companies');

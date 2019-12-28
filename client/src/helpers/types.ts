@@ -2,7 +2,18 @@ export interface ImageType {
     src: string;
     alt: string;
 }
-
+export interface Owner {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    address?: string;
+    role: 'user' | 'company' | 'admin';
+    phone?: string;
+    createdAt?: string;
+    lastModified?: string;
+    premium: boolean;
+}
 export interface LocationType {
     type: string;
     coordinates: number[];
@@ -39,8 +50,9 @@ export interface CompanyType {
     likes: number;
     votes: number;
     logo?: string;
-    services?: string[];
-    reviews?: ReviewType[];
+    imgs: ImageType[];
+    services: string[];
+    reviews: ReviewType[];
     site?: string;
 }
 
@@ -55,7 +67,7 @@ export interface OfferType {
     slug: string;
     imgs: ImageType[];
     budget?: number;
-    owner: string;
+    owner: Owner;
     createdAt: CreatedAt;
     premium: boolean;
 }

@@ -1,0 +1,45 @@
+.u-list {
+    
+    &__item {
+        position: relative;
+        flex: 0 1 calc(50% - 1rem);
+        font-size: 1.3rem;
+        line-height: 1.4;
+        padding-left: 2rem;
+        margin-bottom: .5rem;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            
+            &:hover,
+            &:active {
+                color: var(--color-primary);
+            }
+        }
+        
+        &--normal { 
+            padding-left: 3rem;
+            flex: 0 1 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .icon {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            transform: rotate(-90deg);
+
+            // fill: var(--color-primary);
+            // &--normal { transform: rotate(0); }
+            // &--primary { fill: var(--color-primary); }
+            // &--secondary { fill: var(--color-secondary); }
+            // &--tertiary { fill: var(--color-tertiary); }
+        }
+
+        &--custom {
+            .icon { transform: rotate(0); }
+        }
+        
+    }
+}

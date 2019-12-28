@@ -7,6 +7,8 @@ import Rating from '../Rating/Rating';
 import CompanyPlaceholder from '../../assets/imgs/placeholder_company.png';
 import SvgSprite from '../UI/SvgSprite/SvgSprite';
 import { CompanyType } from '../../helpers/types';
+import LoaderImg from '../UI/LoaderImg/LoaderImg';
+import LazyLoad from 'react-lazyload';
 
 type CompanyProps = {
     companyData: CompanyType;
@@ -20,14 +22,18 @@ const Company: React.FC<CompanyProps> = ({ companyData }) => {
             <div className="company__top">
                 <div className="company__left">
                     <figure>
-                        <img
-                            src={companyData.logo ? companyData.logo : CompanyPlaceholder}
-                            alt={`${companyData.name} logo`}
-                            className="company__image"
-                        />
+                        <LazyLoad once={true} placeholder={<LoaderImg />}>
+                            <img
+                                src={companyData.logo ? companyData.logo : CompanyPlaceholder}
+                                alt={`${companyData.name} logo`}
+                                className="company__image"
+                            />
+                        </LazyLoad>
                     </figure>
                     <div className="company__rating">
-                        <Rating likes={companyData.likes} votes={companyData.votes} />
+                        <div>
+                            <Rating likes={companyData.likes} votes={companyData.votes} />
+                        </div>
                         <span className="company__likes">({companyData.likes})</span>
                     </div>
                 </div>

@@ -5,7 +5,7 @@ import HomePage from './Home/Home';
 import AccountPage from './Account/Account';
 import AdminPage from './Admin/Admin';
 import CompaniesPage from './Companies/Companies';
-import CompanyPage from './Company/Company';
+import CompanyDetailsPage from './CompanyDetails/CompanyDetails';
 import OffersPage from './Offers/Offers';
 import OfferDetailsPage from './OfferDetails/OfferDetails';
 import LoginPage from './Login/Login';
@@ -31,7 +31,7 @@ const Root: React.FC = () => {
                         <Route path="/" exact component={HomePage} />
                         <Route path="/home" component={HomePage} />
                         <Route path="/companies" exact component={CompaniesPage} />
-                        <Route path="/companies/:id" component={CompanyPage} />
+                        <Route path="/companies/:id" component={CompanyDetailsPage} />
                         <Route path="/offers" exact component={OffersPage} />
                         <Route path="/offers/:id" component={OfferDetailsPage} />
                         <Route path="/login" component={LoginPage} />

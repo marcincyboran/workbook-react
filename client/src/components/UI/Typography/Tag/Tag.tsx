@@ -1,6 +1,14 @@
 import React from 'react';
 import './Tag.scss';
+import classes from 'react-style-classes';
 
-const Tag: React.FC = ({ children }) => <span className="tag">{children}</span>;
+type TagProps = {
+    simple?: boolean;
+    size?: 'small' | 'big';
+};
+
+const Tag: React.FC<TagProps> = ({ children, simple, size }) => {
+    return <span className={classes('tag', simple && 'tag--simple', size && `tag--${size}`)}>{children}</span>;
+};
 
 export default Tag;
