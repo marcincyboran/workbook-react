@@ -1,24 +1,32 @@
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utilities/errorResponse');
 const Account = require('../models/Account');
+const Company = require('../models/Company');
 const _ = require('lodash/object');
 
 // @desc    Get companies
 // @route   GET /api/v1/companies
 // @acces   PUBLIC
 module.exports.getCompanies = asyncHandler(async (req, res, next) => {
-    res.status(200).json({
-        success: true,
-        payload: fakeCompanies,
-    });
+    res.status(200).json(res.queryChain);
 });
 
 // @desc    Get single company
 // @route   GET /api/v1/companies/:id
 // @acces   PUBLIC
 module.exports.getCompany = asyncHandler(async (req, res, next) => {
-    console.log(req.params.id);
-    const company = fakeCompanies.find(el => el._id == req.params.id);
+    if (!req.params.id) return next(new ErrorResponse('Company ID required', 400));
+
+    const company = await Company.findById(req.params.id).populate({
+        path: 'reviews',
+        options: {
+            limit: 3,
+            sort: { createdAt: -1 },
+        },
+    });
+
+    if (!company) return next(new ErrorResponse('There is no company with given ID', 404));
+
     res.status(200).json({
         success: true,
         payload: company,

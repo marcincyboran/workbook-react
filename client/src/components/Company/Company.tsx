@@ -32,9 +32,9 @@ const Company: React.FC<CompanyProps> = ({ companyData }) => {
                     </figure>
                     <div className="company__rating">
                         <div>
-                            <Rating likes={companyData.likes} votes={companyData.votes} />
+                            <Rating likes={companyData.points} votes={companyData.votes} />
                         </div>
-                        <span className="company__likes">({companyData.likes})</span>
+                        <span className="company__likes">({companyData.points})</span>
                     </div>
                 </div>
                 <div className="company__right">
@@ -53,7 +53,7 @@ const Company: React.FC<CompanyProps> = ({ companyData }) => {
                                 {companyData.name}
                             </Link>
                         </Heading>
-                        <p className="company__description">{companyData.text}</p>
+                        <p className="company__description">{companyData.description}</p>
                     </div>
                     <p className="company__tags">{tags}</p>
                 </div>

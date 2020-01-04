@@ -13,7 +13,7 @@ router
 router
     .route('/:id')
     .get(getOffer)
-    .put(updateOffer)
+    .put(auth, access('user', 'admin'), updateOffer)
     .delete(auth, access('user', 'admin'), deleteOffer);
 
 module.exports = router;

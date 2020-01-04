@@ -53,7 +53,7 @@ const CompanyDetailPage: React.FC = () => {
                             <span>{data.address}</span>
                         </a>
                         <div className="companyDetail__top-rate">
-                            <span>{((data.likes / data.votes) * 10).toFixed(1)}</span>
+                            <span>{((data.points / data.votes) * 10).toFixed(1)}</span>
                         </div>
                     </div>
                     <Gallery imgs={data.imgs} items={3} />
@@ -62,7 +62,7 @@ const CompanyDetailPage: React.FC = () => {
                             <Heading tag="h3" type="secondary" className="u-mb-small">
                                 Opis:
                             </Heading>
-                            <p className="companyDetail__description-text u-mb-big">{data.text}</p>
+                            <p className="companyDetail__description-text u-mb-big">{data.description}</p>
                             <Heading tag="h3" type="secondary" className="u-mb-small">
                                 Usługi:
                             </Heading>
@@ -88,7 +88,7 @@ const CompanyDetailPage: React.FC = () => {
                             </Heading>
                             {data.site && (
                                 <List addClass="u-mb-big">
-                                    <ListItem type="normal" customIcon="home">
+                                    <ListItem type="normal" customIcon="home" iconColor="secondary">
                                         <a
                                             href={data.site}
                                             target="_blank"

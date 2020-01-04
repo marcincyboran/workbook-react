@@ -42,12 +42,12 @@ export type CreatedAt = Date | string | number;
 export interface CompanyType {
     _id: string;
     name: string;
-    text: string;
+    description: string;
     createdAt: CreatedAt;
     address: string;
     location: LocationType;
     tags: string[];
-    likes: number;
+    points: number;
     votes: number;
     logo?: string;
     imgs: ImageType[];
