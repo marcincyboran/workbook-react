@@ -1,0 +1,19 @@
+.filter__item {
+    border: var(--border-light);
+    border-radius: var(--default-border-radius);
+    background-color: var(--color-white);
+    padding: .4rem 1.2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all .3s, border-color .3s;
+
+    &:hover {
+        color: var(--color-dark);
+        border-color: var(--color-gray-dark-2);
+    }
+
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
+}

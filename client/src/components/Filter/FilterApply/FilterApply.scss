@@ -1,0 +1,17 @@
+.filter__apply {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: var(--color-tertiary);
+    padding: .4rem 1.2rem;
+    margin-left: auto;
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-small-light);
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color .3s, border-color .3s;
+
+    &:hover {
+        color: var(--color-tertiary);
+        border-color: var(--color-gray-dark-3);
+    }
+}

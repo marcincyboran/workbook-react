@@ -73,7 +73,6 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
                 <Form className="login__form" handleSubmit={formik.handleSubmit} useCustomError>
                     <FormGroup type="full">
                         <FieldText
-                            label=""
                             type="email"
                             getFieldProps={formik.getFieldProps('email')}
                             errors={formik.errors.email as string}
@@ -83,7 +82,6 @@ const LoginPage: React.FC<RouteComponentProps> = ({ history }) => {
                     </FormGroup>
                     <FormGroup type="full">
                         <FieldText
-                            label=""
                             type="password"
                             getFieldProps={formik.getFieldProps('password')}
                             errors={formik.errors.password as string}

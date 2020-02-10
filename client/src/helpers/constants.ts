@@ -24,4 +24,8 @@ export default {
     MAX_FILE_SIZE: 1000000,
 
     MAP_API: 'AIzaSyA0eLeg_EV7QHpFlX107Ci9SSY-HEdcfto&',
+
+    // Filter default settings
+    CITIES: ['Warszawa', 'Kraków', 'Wrocław', 'Poznań', 'Trójmiasto', 'Katowice'],
+    CATEGORIES: ['Budowa', 'Instalacja', 'Wykończenie', 'Ogród'],
 };

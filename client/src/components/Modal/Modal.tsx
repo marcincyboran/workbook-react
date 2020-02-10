@@ -3,10 +3,10 @@ import './Modal.scss';
 import Backdrop from '../UI/Backdrop/Backdrop';
 import classes from 'react-style-classes';
 
-type ModalProps = {
+interface ModalProps {
     show: boolean;
     onCloseHandler: () => void;
-};
+}
 
 const Modal: React.FC<ModalProps> = ({ children, show, onCloseHandler }) => {
     return (

@@ -1,0 +1,9 @@
+.filter__row {
+    display: flex;
+    align-items: center;
+
+    &--title {
+        font-size: 1.6rem;
+        margin-right: 2rem;
+    }
+}

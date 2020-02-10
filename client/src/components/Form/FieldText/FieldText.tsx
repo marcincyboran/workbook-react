@@ -4,10 +4,10 @@ import SvgSprite from './../../UI/SvgSprite/SvgSprite';
 
 type FieldTextProps = {
     getFieldProps: { [key: string]: any };
-    label: string;
     type: 'text' | 'password' | 'email' | 'textarea' | 'number';
-    errors: string;
-    touched: boolean;
+    touched?: boolean;
+    errors?: string;
+    label?: string;
     placeholder?: string;
     required?: boolean;
     textarea?: boolean;
@@ -37,7 +37,7 @@ const FieldText: React.FC<FieldTextProps> = ({
                 id={getFieldProps.name}
                 name={getFieldProps.name}
                 {...getFieldProps}
-                placeholder={placeholder ? placeholder : ''}
+                placeholder={placeholder}
             />
             <SvgSprite className="form__valid-icon" icon="check" />
             <span className="form__input-error">{errors}</span>
@@ -55,7 +55,7 @@ const FieldText: React.FC<FieldTextProps> = ({
                 name={getFieldProps.name}
                 type={type}
                 {...getFieldProps}
-                placeholder={placeholder ? placeholder : ''}
+                placeholder={placeholder}
             />
             <SvgSprite className="form__valid-icon" icon="check" />
             <span className="form__input-error">{errors}</span>

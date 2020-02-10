@@ -1,0 +1,56 @@
+.filter {
+    position: relative;
+    border-bottom: var(--border-light);
+    padding-bottom: calc(0.5 * var(--default-vertical-gap));
+    margin-bottom: calc(0.5 * var(--default-vertical-gap));
+
+    &__icon-box {
+        margin-left: auto;
+        padding: 0.3rem 0.6rem 0;
+        background-color: var(--color-white);
+        cursor: pointer;
+        box-shadow: var(--shadow-small-light);
+    }
+
+    &__icon {
+        width: 2.6rem;
+        height: 2.6rem;
+        fill: var(--color-gray-dark-2);
+        transition: fill 0.3s;
+    }
+
+    &__icon-box:hover &__icon {
+        fill: var(--color-gray-dark-1);
+    }
+
+    &__cost-box {
+        width: 30rem;
+        display: flex;
+        align-items: center;
+
+        span {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    input {
+        border: var(--border-lighter);
+        box-shadow: none;
+        border-bottom-color: var(--color-gray-light-4);
+        border-left-color: var(--color-gray-light-4);
+        font-size: 1.4rem;
+
+        &:not(:placeholder-shown) {
+            background-color: var(--color-primary-light);
+        }
+    }
+
+    &--more &__icon {
+        fill: var(--color-gray-light-4);
+    }
+}
+
+main > .filter {
+    margin-top: calc(-0.5 * var(--default-vertical-gap));
+}

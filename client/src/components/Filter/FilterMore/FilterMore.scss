@@ -1,0 +1,13 @@
+.filter__more {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s;
+
+    & > div {
+        padding-top: 1rem;
+    }
+
+    &--show {
+        max-height: 20rem;
+    }
+}

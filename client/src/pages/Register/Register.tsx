@@ -14,7 +14,7 @@ const RegisterPage: React.FC = () => {
     }, []);
 
     return (
-        <div className="container">
+        <>
             <section className="register">
                 <div className="register__nav">
                     <span
@@ -47,12 +47,12 @@ const RegisterPage: React.FC = () => {
                         <RegisterUser />
                     </div>
                     <div className="register__block register__block--company">
-                        <RegisterCompany />
+                        {/* <RegisterCompany /> */}
                         <div className="register__bg-img register__bg-img--company">&nbsp;</div>
                     </div>
                 </div>
             </section>
-        </div>
+        </>
     );
 };
 

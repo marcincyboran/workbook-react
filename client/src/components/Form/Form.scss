@@ -28,19 +28,20 @@
     }
 
     &__valid-icon {
+        position: absolute;
         visibility: none;
         opacity: 0;
         width: 2.2rem;
         height: 2.2rem;
         padding: .3rem;
-        position: absolute;
-        top: 1.8rem;
+        // top: 1.8rem;
+        top: 50%;
         right: -1rem;
+        // transform: translateY(-50%);
         background-color: var(--color-white);
         border-radius: 50%;
         border: var(--border-lighter);
         border-color: var(--color-secondary-light);
-        transform: translateY(50%);
         fill: rgba($color-secondary-light, .75);
         transition: opacity .4s ease-in;
     }
@@ -58,6 +59,10 @@
         &--textarea {
             min-height: 12rem;
             resize: vertical;
+        }
+
+        &::placeholder {
+            color: var(--color-secondary-dark)
         }
 
         &:focus {
@@ -95,6 +100,10 @@
         opacity: 0;
         transition: opacity 400ms;
         &.in { opacity: 1}
+    }
+
+    &__block {
+        position: relative;
     }
 
     &__block.valid &__valid-icon {

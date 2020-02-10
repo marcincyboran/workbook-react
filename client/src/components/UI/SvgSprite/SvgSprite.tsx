@@ -5,7 +5,7 @@ import classes from 'react-style-classes';
 
 type SvgSpriteProps = {
     icon: string;
-    color?: 'primary' | 'secondary' | 'tertiary' | 'blank';
+    color?: 'primary' | 'secondary' | 'tertiary' | 'blank' | 'dark';
     className?: string;
     rotate?: '90' | '180' | '270';
     size?: 'small' | 'big';

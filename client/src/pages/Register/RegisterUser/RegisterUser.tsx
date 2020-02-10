@@ -54,7 +54,7 @@ const RegisterUser: React.FC = () => {
                 history.push('/login');
             } catch (err) {
                 Helpers.clearUser();
-                if (err.response.status === 400) return setError(err.response.error);
+                if (err.response.status === 400) return setError('Invalid inputs');
                 return setError('Something went wrong, try again');
             }
         },
