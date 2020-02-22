@@ -1,0 +1,20 @@
+version: "3"
+services: 
+  frontend:
+    build: ./docker/frontend
+    env_file: ./docker/frontend/.env
+    working_dir: /usr/src/app
+    restart: always
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+      - 3000:3000
+  backend:
+    build: ./docker/backend
+    env_file: ./docker/backend/.env
+    working_dir: /usr/src/backend
+    restart: always
+    volumes: 
+      - ./server:/usr/src/backend
+    ports: 
+      - 5000:5000

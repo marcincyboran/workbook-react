@@ -1,4 +1,3 @@
-require('dotenv').config({ path: './config/config.env' });
 require('colors');
 
 const express = require('express');
